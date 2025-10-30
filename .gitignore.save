@@ -1,0 +1,38 @@
+# macOS
+.DS_Store
+
+# IDE / OS / Tools
+.vscode/
+.idea/
+node_modules/
+*.log
+
+# HISE & JUCE Artefakte
+Builds/
+Binaries/
+JuceLibraryCode/
+Intermediate/
+*.o
+*.obj
+*.pch
+
+# Exporte
+Export/Builds/
+Export/*.zip
+Export/*.dmg
+Export/*.exe
+Export/*.pkg
+Export/*.msi
+
+# Audio Files (never commit)
+*.wav
+*.aif
+*.aiff
+*.flac
+*.mp3
+
+# Optional: falls du lokal einen Sample-Ordner im Projekt hast
+Samples/
+SampleData/
+
+
