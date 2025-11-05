@@ -3,7 +3,7 @@
 <ContentProperties DeviceType="Desktop">
   <Component type="ScriptPanel" id="pnlMain" x="0.0" y="0.0" width="800.0"
              height="300.0" itemColour2="818112359" borderRadius="0.0" textColour="587202560">
-    <Component type="ScriptSlider" id="Mix" x="600.0" y="70.0" stepSize="0.001"
+    <Component type="ScriptSlider" id="Mix" x="350.0" y="80.0" stepSize="0.001"
                parentComponent="pnlMain"/>
     <Component type="ScriptFloatingTile" id="fltKeyboard" x="351.0" y="240.0"
                width="449.0" height="60.0" parentComponent="pnlMain" updateAfterInit="0"
@@ -17,9 +17,5 @@
                width="300.0" height="80.0" parentComponent="pnlMain" ContentType="PresetBrowser"
                bgColour="4143972352" itemColour="4287692721" itemColour2="0"
                Data="{&#10;  &quot;ShowSaveButton&quot;: true,&#10;  &quot;ShowExpansionsAsColumn&quot;: false,&#10;  &quot;ShowFolderButton&quot;: true,&#10;  &quot;ShowNotes&quot;: true,&#10;  &quot;ShowEditButtons&quot;: true,&#10;  &quot;EditButtonOffset&quot;: 10,&#10;  &quot;ShowAddButton&quot;: true,&#10;  &quot;ShowRenameButton&quot;: true,&#10;  &quot;ShowDeleteButton&quot;: true,&#10;  &quot;ShowSearchBar&quot;: true,&#10;  &quot;ShowFavoriteIcon&quot;: true,&#10;  &quot;FullPathFavorites&quot;: false,&#10;  &quot;ButtonsInsideBorder&quot;: false,&#10;  &quot;NumColumns&quot;: 1,&#10;  &quot;ColumnWidthRatio&quot;: [&#10;    0.3333333333333333,&#10;    0.3333333333333333,&#10;    0.3333333333333333&#10;  ],&#10;  &quot;ListAreaOffset&quot;: [&#10;    0,&#10;    0,&#10;    0,&#10;    0&#10;  ],&#10;  &quot;ColumnRowPadding&quot;: [&#10;    0,&#10;    0,&#10;    0,&#10;    0&#10;  ],&#10;  &quot;SearchBarBounds&quot;: [],&#10;  &quot;MoreButtonBounds&quot;: [],&#10;  &quot;SaveButtonBounds&quot;: [],&#10;  &quot;FavoriteButtonBounds&quot;: []&#10;}"/>
-    <Component type="ScriptSlider" id="knbMix" x="750.0" y="50.0" width="27.0"
-               height="161.0" parentComponent="pnlMain" useUndoManager="1" macroControl="No MacroControl"
-               isPluginParameter="1" style="Vertical" showValuePopup="Above"
-               showTextBox="0" mode="NormalizedPercentage" suffix="%" middlePosition="0.5"/>
   </Component>
 </ContentProperties>

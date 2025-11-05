@@ -9,8 +9,7 @@
         <Processor Type="ScriptProcessor" ID="Interface" Bypassed="0">
           <ChildProcessors/>
           <Content>
-            <Control type="ScriptSlider" id="Mix" value="0.03999999910593033"/>
-            <Control type="ScriptSlider" id="knbMix" value="0.0"/>
+            <Control type="ScriptSlider" id="Mix" value="0.9539999961853027"/>
           </Content>
           <UIData Source="BontempiUIData"/>
         </Processor>
@@ -33,7 +32,7 @@
             <Processor Type="ScriptProcessor" ID="Script Processor1" Bypassed="0">
               <ChildProcessors/>
               <Content>
-                <Control type="ScriptSlider" id="Mix" value="0.0"/>
+                <Control type="ScriptSlider" id="Mix" value="1.0"/>
               </Content>
               <UIData>
                 <ContentProperties DeviceType="Desktop">
@@ -127,7 +126,7 @@
             </Processor>
             <Processor Type="EffectChain" ID="FX" Bypassed="0">
               <ChildProcessors>
-                <Processor Type="SimpleGain" ID="sampler0FxSimpleGain" Bypassed="0" Gain="-0.01715654879808426"
+                <Processor Type="SimpleGain" ID="sampler0FxSimpleGain" Bypassed="0" Gain="-22.83000564575195"
                            Delay="0.0" Width="100.0" Balance="0.0" InvertPolarity="0.0">
                   <ChildProcessors>
                     <Processor Type="ModulatorChain" ID="Gain Modulation" Bypassed="0" Intensity="1.0">
@@ -232,7 +231,7 @@
                   <ChildProcessors/>
                   <RoutingMatrix NumSourceChannels="2" Channel0="0" Send0="-1" Channel1="1" Send1="-1"/>
                 </Processor>
-                <Processor Type="SimpleGain" ID="sampler1FxSimpleGain" Bypassed="0" Gain="-24.04211807250977"
+                <Processor Type="SimpleGain" ID="sampler1FxSimpleGain" Bypassed="0" Gain="-0.02269433997571468"
                            Delay="0.0" Width="100.0" Balance="0.0" InvertPolarity="0.0">
                   <ChildProcessors>
                     <Processor Type="ModulatorChain" ID="Gain Modulation" Bypassed="0" Intensity="1.0">

@@ -19,6 +19,8 @@ inline function linToDb(x)
 
 inline function updateGains(m) // m in [0..1]
 {
+	
+
     local gA = Math.cos(m * Math.PI * 0.5);
     local gB = Math.sin(m * Math.PI * 0.5);
 
