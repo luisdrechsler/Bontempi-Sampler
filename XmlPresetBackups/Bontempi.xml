@@ -8,7 +8,9 @@
       <ChildProcessors>
         <Processor Type="ScriptProcessor" ID="Interface" Bypassed="0">
           <ChildProcessors/>
-          <Content/>
+          <Content>
+            <Control type="ScriptSlider" id="knbMix" value="0.0"/>
+          </Content>
           <UIData Source="BontempiUIData"/>
         </Processor>
       </ChildProcessors>
@@ -89,6 +91,10 @@
                            DefaultValue="127.0">
                   <ChildProcessors/>
                 </Processor>
+                <Processor Type="Velocity" ID="sampler0GainVelocity" Bypassed="0" Intensity="0.75"
+                           UseTable="1.0" Inverted="0.0" DecibelMode="1.0" VelocityTableData="">
+                  <ChildProcessors/>
+                </Processor>
               </ChildProcessors>
             </Processor>
             <Processor Type="ModulatorChain" ID="PitchModulation" Bypassed="0" Intensity="0.0">
@@ -112,6 +118,30 @@
                   <ChildProcessors/>
                   <RoutingMatrix NumSourceChannels="2" Channel0="0" Send0="-1" Channel1="1" Send1="-1"/>
                 </Processor>
+                <Processor Type="SimpleGain" ID="sampler0FxSimpleGain" Bypassed="0" Gain="0.0"
+                           Delay="0.0" Width="100.0" Balance="0.0" InvertPolarity="0.0">
+                  <ChildProcessors>
+                    <Processor Type="ModulatorChain" ID="Gain Modulation" Bypassed="0" Intensity="1.0">
+                      <ChildProcessors>
+                        <Processor Type="MidiController" ID="sampler0FxsimpleGainMidiCc" Bypassed="0"
+                                   Intensity="1.0" UseTable="1.0" Inverted="0.0" ControllerNumber="1.0"
+                                   SmoothTime="1000.0" DefaultValue="0.0" ControllerTableData="36..........9C...vO3Y5e+.........vO...f+.........vO">
+                          <ChildProcessors/>
+                        </Processor>
+                      </ChildProcessors>
+                    </Processor>
+                    <Processor Type="ModulatorChain" ID="Delay Modulation" Bypassed="0" Intensity="1.0">
+                      <ChildProcessors/>
+                    </Processor>
+                    <Processor Type="ModulatorChain" ID="Width Modulation" Bypassed="0" Intensity="1.0">
+                      <ChildProcessors/>
+                    </Processor>
+                    <Processor Type="ModulatorChain" ID="Pan Modulation" Bypassed="0" Intensity="1.0">
+                      <ChildProcessors/>
+                    </Processor>
+                  </ChildProcessors>
+                  <RoutingMatrix NumSourceChannels="2" Channel0="0" Send0="-1" Channel1="1" Send1="-1"/>
+                </Processor>
               </ChildProcessors>
             </Processor>
             <Processor Type="ModulatorChain" ID="Sample Start" Bypassed="0" Intensity="1.0">
@@ -133,7 +163,7 @@
                    OneShot="0.0" CrossfadeGroups="0.0" Purged="0.0" Reversed="0.0"
                    NumChannels="1" UseStaticMatrix="0.0" Group0Table="" Group1Table=""
                    Group2Table="" Group3Table="" Group4Table="" Group5Table="" Group6Table=""
-                   Group7Table="">
+                   Group7Table="" SampleMapID="Goldmike">
           <ChildProcessors>
             <Processor Type="MidiProcessorChain" ID="Midi Processor" Bypassed="0">
               <ChildProcessors/>
@@ -172,6 +202,10 @@
                            DefaultValue="127.0">
                   <ChildProcessors/>
                 </Processor>
+                <Processor Type="Velocity" ID="sampler1GainVelocity" Bypassed="0" Intensity="0.75"
+                           UseTable="1.0" Inverted="0.0" DecibelMode="1.0" VelocityTableData="24..........5C...vO...f+....9C...vO">
+                  <ChildProcessors/>
+                </Processor>
               </ChildProcessors>
             </Processor>
             <Processor Type="ModulatorChain" ID="PitchModulation" Bypassed="0" Intensity="0.0">
@@ -189,10 +223,34 @@
             </Processor>
             <Processor Type="EffectChain" ID="FX" Bypassed="0">
               <ChildProcessors>
-                <Processor Type="SimpleReverb" ID="sampler10" Bypassed="0" RoomSize="0.3600000143051147"
-                           Damping="0.6000000238418579" WetLevel="0.09000000357627869" DryLevel="0.9099999666213989"
-                           Width="0.800000011920929" FreezeMode="0.1000000014901161">
+                <Processor Type="SimpleReverb" ID="sampler1FxSimpleReverb" Bypassed="0"
+                           RoomSize="0.3600000143051147" Damping="0.6000000238418579" WetLevel="0.09000000357627869"
+                           DryLevel="0.9099999666213989" Width="0.800000011920929" FreezeMode="0.1000000014901161">
                   <ChildProcessors/>
+                  <RoutingMatrix NumSourceChannels="2" Channel0="0" Send0="-1" Channel1="1" Send1="-1"/>
+                </Processor>
+                <Processor Type="SimpleGain" ID="sampler1FxSimpleGain" Bypassed="0" Gain="0.0"
+                           Delay="0.0" Width="100.0" Balance="0.0" InvertPolarity="0.0">
+                  <ChildProcessors>
+                    <Processor Type="ModulatorChain" ID="Gain Modulation" Bypassed="0" Intensity="1.0">
+                      <ChildProcessors>
+                        <Processor Type="MidiController" ID="sampler1FxSimpleGain" Bypassed="0"
+                                   Intensity="1.0" UseTable="1.0" Inverted="0.0" ControllerNumber="1.0"
+                                   SmoothTime="1000.0" DefaultValue="0.0" ControllerTableData="">
+                          <ChildProcessors/>
+                        </Processor>
+                      </ChildProcessors>
+                    </Processor>
+                    <Processor Type="ModulatorChain" ID="Delay Modulation" Bypassed="0" Intensity="1.0">
+                      <ChildProcessors/>
+                    </Processor>
+                    <Processor Type="ModulatorChain" ID="Width Modulation" Bypassed="0" Intensity="1.0">
+                      <ChildProcessors/>
+                    </Processor>
+                    <Processor Type="ModulatorChain" ID="Pan Modulation" Bypassed="0" Intensity="1.0">
+                      <ChildProcessors/>
+                    </Processor>
+                  </ChildProcessors>
                   <RoutingMatrix NumSourceChannels="2" Channel0="0" Send0="-1" Channel1="1" Send1="-1"/>
                 </Processor>
               </ChildProcessors>
@@ -208,77 +266,6 @@
           <channels>
             <channelData enabled="1" level="0.0" suffix=""/>
           </channels>
-          <samplemap CrossfadeGamma="1.0" ID="Goldmike" RRGroupAmount="1.0" MicPositions=";">
-            <sample Root="60" LoKey="60" HiKey="60" LoVel="0" HiVel="127" RRGroup="1"
-                    FileName="{PROJECT_FOLDER}Bontempi_Goldmike_Notes/  Bontempi_Goldmike_Notes_rr1_60_C3.wav"
-                    Duplicate="1"/>
-            <sample Root="61" LoKey="61" HiKey="62" LoVel="0" HiVel="127" RRGroup="1"
-                    FileName="{PROJECT_FOLDER}Bontempi_Goldmike_Notes/ Bontempi_Goldmike_Notes_rr1_61_C#3.wav"
-                    Duplicate="1"/>
-            <sample Root="63" LoKey="63" HiKey="63" LoVel="0" HiVel="127" RRGroup="1"
-                    FileName="{PROJECT_FOLDER}Bontempi_Goldmike_Notes/  Bontempi_Goldmike_Notes_rr1_63_C#3.wav"
-                    Duplicate="1"/>
-            <sample Root="64" LoKey="64" HiKey="64" LoVel="0" HiVel="127" RRGroup="1"
-                    FileName="{PROJECT_FOLDER}Bontempi_Goldmike_Notes/  Bontempi_Goldmike_Notes_rr1_64_E3.wav"
-                    Duplicate="1"/>
-            <sample Root="65" LoKey="65" HiKey="65" LoVel="0" HiVel="127" RRGroup="1"
-                    FileName="{PROJECT_FOLDER}Bontempi_Goldmike_Notes/  Bontempi_Goldmike_Notes_rr1_65_F3.wav"
-                    Duplicate="1"/>
-            <sample Root="66" LoKey="66" HiKey="66" LoVel="0" HiVel="127" RRGroup="1"
-                    FileName="{PROJECT_FOLDER}Bontempi_Goldmike_Notes/  Bontempi_Goldmike_Notes_rr1_66_F'3.wav"
-                    Duplicate="1"/>
-            <sample Root="67" LoKey="67" HiKey="67" LoVel="0" HiVel="127" RRGroup="1"
-                    FileName="{PROJECT_FOLDER}Bontempi_Goldmike_Notes/  Bontempi_Goldmike_Notes_rr1_67_G3.wav"
-                    Duplicate="1"/>
-            <sample Root="68" LoKey="68" HiKey="68" LoVel="0" HiVel="127" RRGroup="1"
-                    FileName="{PROJECT_FOLDER}Bontempi_Goldmike_Notes/  Bontempi_Goldmike_Notes_rr1_68_G#3.wav"
-                    Duplicate="1"/>
-            <sample Root="69" LoKey="69" HiKey="69" LoVel="0" HiVel="127" RRGroup="1"
-                    FileName="{PROJECT_FOLDER}Bontempi_Goldmike_Notes/  Bontempi_Goldmike_Notes_rr1_69_A3.wav"
-                    Duplicate="1"/>
-            <sample Root="70" LoKey="70" HiKey="70" LoVel="0" HiVel="127" RRGroup="1"
-                    FileName="{PROJECT_FOLDER}Bontempi_Goldmike_Notes/  Bontempi_Goldmike_Notes_rr1_70_A#3.wav"
-                    Duplicate="1"/>
-            <sample Root="71" LoKey="71" HiKey="71" LoVel="0" HiVel="127" RRGroup="1"
-                    FileName="{PROJECT_FOLDER}Bontempi_Goldmike_Notes/  Bontempi_Goldmike_Notes_rr1_71_B3.wav"
-                    Duplicate="1"/>
-            <sample Root="72" LoKey="72" HiKey="72" LoVel="0" HiVel="127" RRGroup="1"
-                    FileName="{PROJECT_FOLDER}Bontempi_Goldmike_Notes/ Bontempi_Goldmike_Notes_rr1_72_C4.wav"
-                    Duplicate="1"/>
-            <sample Root="73" LoKey="73" HiKey="73" LoVel="0" HiVel="127" RRGroup="1"
-                    FileName="{PROJECT_FOLDER}Bontempi_Goldmike_Notes/  Bontempi_Goldmike_Notes_rr1_73_C#4.wav"
-                    Duplicate="1"/>
-            <sample Root="75" LoKey="75" HiKey="75" LoVel="0" HiVel="127" RRGroup="1"
-                    FileName="{PROJECT_FOLDER}Bontempi_Goldmike_Notes/  Bontempi_Goldmike_Notes_rr1_74_D#4.wav"
-                    Duplicate="1"/>
-            <sample Root="74" LoKey="74" HiKey="74" LoVel="0" HiVel="127" RRGroup="1"
-                    FileName="{PROJECT_FOLDER}Bontempi_Goldmike_Notes/  Bontempi_Goldmike_Notes_rr1_74_D4.wav"
-                    Duplicate="1"/>
-            <sample Root="76" LoKey="76" HiKey="76" LoVel="0" HiVel="127" RRGroup="1"
-                    FileName="{PROJECT_FOLDER}Bontempi_Goldmike_Notes/  Bontempi_Goldmike_Notes_rr1_76_E4.wav"
-                    Duplicate="1"/>
-            <sample Root="77" LoKey="77" HiKey="77" LoVel="0" HiVel="127" RRGroup="1"
-                    FileName="{PROJECT_FOLDER}Bontempi_Goldmike_Notes/ Bontempi_Goldmike_Notes_rr1_77_F4.wav"
-                    Duplicate="1"/>
-            <sample Root="80" LoKey="80" HiKey="80" LoVel="0" HiVel="127" RRGroup="1"
-                    FileName="{PROJECT_FOLDER}Bontempi_Goldmike_Notes/Bontempi_Goldmike_Notes_rr1_80_G#4.wav"
-                    Duplicate="1"/>
-            <sample Root="81" LoKey="81" HiKey="81" LoVel="0" HiVel="127" RRGroup="1"
-                    FileName="{PROJECT_FOLDER}Bontempi_Goldmike_Notes/  Bontempi_Goldmike_Notes_rr1_81_A4.wav"
-                    Duplicate="1"/>
-            <sample Root="82" LoKey="82" HiKey="82" LoVel="0" HiVel="127" RRGroup="1"
-                    FileName="{PROJECT_FOLDER}Bontempi_Goldmike_Notes/  Bontempi_Goldmike_Notes_rr1_82_A#4.wav"
-                    Duplicate="1"/>
-            <sample Root="83" LoKey="83" HiKey="83" LoVel="0" HiVel="127" RRGroup="1"
-                    FileName="{PROJECT_FOLDER}Bontempi_Goldmike_Notes/  Bontempi_Goldmike_Notes_rr1_83_B4.wav"
-                    Duplicate="1"/>
-            <sample Root="84" LoKey="84" HiKey="84" LoVel="0" HiVel="127" RRGroup="1"
-                    FileName="{PROJECT_FOLDER}Bontempi_Goldmike_Notes/  Bontempi_Goldmike_Notes_rr1_84_C5.wav"
-                    Duplicate="1"/>
-            <sample Root="78" LoKey="78" HiKey="79" LoVel="0" HiVel="127" RRGroup="1"
-                    FileName="{PROJECT_FOLDER}Bontempi_Goldmike_Notes/  Bontempi_Goldmike_Notes_rr1_87_F#4.wav"
-                    Duplicate="1"/>
-          </samplemap>
         </Processor>
       </ChildProcessors>
       <RoutingMatrix NumSourceChannels="2" Channel0="0" Send0="-1" Channel1="1" Send1="-1"/>

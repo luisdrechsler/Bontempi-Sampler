@@ -3,10 +3,12 @@
 <samplemap CrossfadeGamma="1.0" ID="Goldmike" RRGroupAmount="1.0" MicPositions=";">
   <sample Root="60" LoKey="60" HiKey="60" LoVel="0" HiVel="127" RRGroup="1"
           FileName="{PROJECT_FOLDER}Bontempi_Goldmike_Notes/  Bontempi_Goldmike_Notes_rr1_60_C3.wav"
-          Duplicate="1"/>
+          Duplicate="1" LoopStart="97474" LoopEnd="242019" Normalized="0"
+          NormalizedPeak="1.412537217140198" LoopEnabled="1" LoopXFade="20"/>
   <sample Root="61" LoKey="61" HiKey="62" LoVel="0" HiVel="127" RRGroup="1"
           FileName="{PROJECT_FOLDER}Bontempi_Goldmike_Notes/ Bontempi_Goldmike_Notes_rr1_61_C#3.wav"
-          Duplicate="1"/>
+          Duplicate="1" LoopEnabled="1" LoopStart="115864" LoopEnd="249271"
+          LoopXFade="10"/>
   <sample Root="63" LoKey="63" HiKey="63" LoVel="0" HiVel="127" RRGroup="1"
           FileName="{PROJECT_FOLDER}Bontempi_Goldmike_Notes/  Bontempi_Goldmike_Notes_rr1_63_C#3.wav"
           Duplicate="1"/>
