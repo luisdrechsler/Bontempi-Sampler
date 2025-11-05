@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <ContentProperties DeviceType="Desktop">
-  <Component type="ScriptPanel" id="pnlMain" x="0.0" y="0.0" width="800" height="300.0"
-             itemColour2="818112359" borderRadius="0.0" textColour="587202560">
+  <Component type="ScriptPanel" id="pnlMain" x="0.0" y="0.0" width="800.0"
+             height="300.0" itemColour2="818112359" borderRadius="0.0" textColour="587202560">
+    <Component type="ScriptSlider" id="Mix" x="600.0" y="70.0" stepSize="0.001"
+               parentComponent="pnlMain"/>
     <Component type="ScriptFloatingTile" id="fltKeyboard" x="351.0" y="240.0"
-               width="449" height="60" parentComponent="pnlMain" updateAfterInit="0"
+               width="449.0" height="60.0" parentComponent="pnlMain" updateAfterInit="0"
                ContentType="Keyboard" bgColour="4284769380" itemColour="452984831"
                itemColour2="4294967295" textColour="0" Data="{&#10;  &quot;KeyWidth&quot;: 30.0,&#10;  &quot;DisplayOctaveNumber&quot;: false,&#10;  &quot;LowKey&quot;: 60,&#10;  &quot;HiKey&quot;: 84,&#10;  &quot;CustomGraphics&quot;: false,&#10;  &quot;DefaultAppearance&quot;: true,&#10;  &quot;BlackKeyRatio&quot;: 0.699999988079071,&#10;  &quot;ToggleMode&quot;: false,&#10;  &quot;MidiChannel&quot;: 1,&#10;  &quot;UseVectorGraphics&quot;: true,&#10;  &quot;UseFlatStyle&quot;: false,&#10;  &quot;MPEKeyboard&quot;: false,&#10;  &quot;MPEStartChannel&quot;: 2,&#10;  &quot;MPEEndChannel&quot;: 16&#10;}"/>
     <Component type="ScriptFloatingTile" id="fltPeakMeter" x="10.0" y="20.0"
@@ -12,10 +14,12 @@
                bgColour="4278190080" itemColour="4283782485" itemColour2="4280427042"
                Data="{&#10;  &quot;ProcessorId&quot;: &quot;Bontempi&quot;,&#10;  &quot;Index&quot;: -1,&#10;  &quot;FollowWorkspace&quot;: false,&#10;  &quot;SegmentLedSize&quot;: 0.0,&#10;  &quot;UpDecayTime&quot;: 0.0,&#10;  &quot;DownDecayTime&quot;: 0.0,&#10;  &quot;UseSourceChannels&quot;: false,&#10;  &quot;SkewFactor&quot;: 0.1,&#10;  &quot;PaddingSize&quot;: 1.0,&#10;  &quot;ShowMaxPeak&quot;: 1.0,&#10;  &quot;ChannelIndexes&quot;: [&#10;    0,&#10;    1&#10;  ]&#10;}"/>
     <Component type="ScriptFloatingTile" id="fltPresetBroswer" x="50.0" y="0.0"
-               width="300" height="80" parentComponent="pnlMain" ContentType="PresetBrowser"
+               width="300.0" height="80.0" parentComponent="pnlMain" ContentType="PresetBrowser"
                bgColour="4143972352" itemColour="4287692721" itemColour2="0"
                Data="{&#10;  &quot;ShowSaveButton&quot;: true,&#10;  &quot;ShowExpansionsAsColumn&quot;: false,&#10;  &quot;ShowFolderButton&quot;: true,&#10;  &quot;ShowNotes&quot;: true,&#10;  &quot;ShowEditButtons&quot;: true,&#10;  &quot;EditButtonOffset&quot;: 10,&#10;  &quot;ShowAddButton&quot;: true,&#10;  &quot;ShowRenameButton&quot;: true,&#10;  &quot;ShowDeleteButton&quot;: true,&#10;  &quot;ShowSearchBar&quot;: true,&#10;  &quot;ShowFavoriteIcon&quot;: true,&#10;  &quot;FullPathFavorites&quot;: false,&#10;  &quot;ButtonsInsideBorder&quot;: false,&#10;  &quot;NumColumns&quot;: 1,&#10;  &quot;ColumnWidthRatio&quot;: [&#10;    0.3333333333333333,&#10;    0.3333333333333333,&#10;    0.3333333333333333&#10;  ],&#10;  &quot;ListAreaOffset&quot;: [&#10;    0,&#10;    0,&#10;    0,&#10;    0&#10;  ],&#10;  &quot;ColumnRowPadding&quot;: [&#10;    0,&#10;    0,&#10;    0,&#10;    0&#10;  ],&#10;  &quot;SearchBarBounds&quot;: [],&#10;  &quot;MoreButtonBounds&quot;: [],&#10;  &quot;SaveButtonBounds&quot;: [],&#10;  &quot;FavoriteButtonBounds&quot;: []&#10;}"/>
-    <Component type="ScriptSlider" id="knbMix" x="670.0" y="100.0" width="60"
-               height="60" parentComponent="pnlMain"/>
+    <Component type="ScriptSlider" id="knbMix" x="750.0" y="50.0" width="27.0"
+               height="161.0" parentComponent="pnlMain" useUndoManager="1" macroControl="No MacroControl"
+               isPluginParameter="1" style="Vertical" showValuePopup="Above"
+               showTextBox="0" mode="NormalizedPercentage" suffix="%" middlePosition="0.5"/>
   </Component>
 </ContentProperties>

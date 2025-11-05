@@ -1,5 +1,3 @@
-Content.makeFrontInterface(800, 300);
-
 // === onInit ===
 
 // 1) UI
@@ -40,7 +38,8 @@ updateGains(Mix.getValue());
 
 // (Optional) Debug
 Console.print("GAIN_A ok: " + (GAIN_A != undefined));
-Console.print("GAIN_B ok: " + (GAIN_B != undefined));function onNoteOn()
+Console.print("GAIN_B ok: " + (GAIN_B != undefined));
+function onNoteOn()
 {
 	
 }
