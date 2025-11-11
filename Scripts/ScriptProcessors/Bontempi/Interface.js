@@ -1,3 +1,4 @@
+
 Content.makeFrontInterface(800, 300);
 
 // === onInit ===
@@ -29,20 +30,7 @@ inline function updateGains(m) // m in [0..1]
     GAIN_B.setAttribute(0, linToDb(gB));
 }
 
-// 4) Callback BENANNT definieren + registrieren
-inline function onMixChanged(component, value)
-{
-    updateGains(value);
-}
-
-Mix.setControlCallback(onMixChanged);
-
-// 5) Initial anwenden
-updateGains(Mix.getValue());
-
-// (Optional) Debug
-Console.print("GAIN_A ok: " + (GAIN_A != undefined));
-Console.print("GAIN_B ok: " + (GAIN_B != undefined));function onNoteOn()
+function onNoteOn()
 {
 	
 }

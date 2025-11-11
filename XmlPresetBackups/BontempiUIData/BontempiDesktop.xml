@@ -3,8 +3,7 @@
 <ContentProperties DeviceType="Desktop">
   <Component type="ScriptPanel" id="pnlMain" x="0.0" y="0.0" width="800.0"
              height="300.0" itemColour2="818112359" borderRadius="0.0" textColour="587202560">
-    <Component type="ScriptSlider" id="Mix" x="350.0" y="80.0" stepSize="0.001"
-               parentComponent="pnlMain"/>
+    <Component type="ScriptSlider" id="Mix" x="10" y="10" stepSize="0.001" parentComponent="pnlMain"/>
     <Component type="ScriptFloatingTile" id="fltKeyboard" x="351.0" y="240.0"
                width="449.0" height="60.0" parentComponent="pnlMain" updateAfterInit="0"
                ContentType="Keyboard" bgColour="4284769380" itemColour="452984831"
@@ -16,6 +15,31 @@
     <Component type="ScriptFloatingTile" id="fltPresetBroswer" x="50.0" y="0.0"
                width="300.0" height="80.0" parentComponent="pnlMain" ContentType="PresetBrowser"
                bgColour="4143972352" itemColour="4287692721" itemColour2="0"
-               Data="{&#10;  &quot;ShowSaveButton&quot;: true,&#10;  &quot;ShowExpansionsAsColumn&quot;: false,&#10;  &quot;ShowFolderButton&quot;: true,&#10;  &quot;ShowNotes&quot;: true,&#10;  &quot;ShowEditButtons&quot;: true,&#10;  &quot;EditButtonOffset&quot;: 10,&#10;  &quot;ShowAddButton&quot;: true,&#10;  &quot;ShowRenameButton&quot;: true,&#10;  &quot;ShowDeleteButton&quot;: true,&#10;  &quot;ShowSearchBar&quot;: true,&#10;  &quot;ShowFavoriteIcon&quot;: true,&#10;  &quot;FullPathFavorites&quot;: false,&#10;  &quot;ButtonsInsideBorder&quot;: false,&#10;  &quot;NumColumns&quot;: 1,&#10;  &quot;ColumnWidthRatio&quot;: [&#10;    0.3333333333333333,&#10;    0.3333333333333333,&#10;    0.3333333333333333&#10;  ],&#10;  &quot;ListAreaOffset&quot;: [&#10;    0,&#10;    0,&#10;    0,&#10;    0&#10;  ],&#10;  &quot;ColumnRowPadding&quot;: [&#10;    0,&#10;    0,&#10;    0,&#10;    0&#10;  ],&#10;  &quot;SearchBarBounds&quot;: [],&#10;  &quot;MoreButtonBounds&quot;: [],&#10;  &quot;SaveButtonBounds&quot;: [],&#10;  &quot;FavoriteButtonBounds&quot;: []&#10;}"/>
+               Data="{&#10;  &quot;ShowSaveButton&quot;: true,&#10;  &quot;ShowExpansionsAsColumn&quot;: false,&#10;  &quot;ShowFolderButton&quot;: true,&#10;  &quot;ShowNotes&quot;: true,&#10;  &quot;ShowEditButtons&quot;: true,&#10;  &quot;EditButtonOffset&quot;: 10,&#10;  &quot;ShowAddButton&quot;: true,&#10;  &quot;ShowRenameButton&quot;: true,&#10;  &quot;ShowDeleteButton&quot;: true,&#10;  &quot;ShowSearchBar&quot;: true,&#10;  &quot;ShowFavoriteIcon&quot;: true,&#10;  &quot;FullPathFavorites&quot;: false,&#10;  &quot;ButtonsInsideBorder&quot;: false,&#10;  &quot;NumColumns&quot;: 1,&#10;  &quot;ColumnWidthRatio&quot;: [&#10;    0.3333333333333333,&#10;    0.3333333333333333,&#10;    0.3333333333333333&#10;  ],&#10;  &quot;ListAreaOffset&quot;: [&#10;    0,&#10;    0,&#10;    0,&#10;    0&#10;  ],&#10;  &quot;ColumnRowPadding&quot;: [&#10;    0,&#10;    0,&#10;    0,&#10;    0&#10;  ],&#10;  &quot;SearchBarBounds&quot;: [],&#10;  &quot;MoreButtonBounds&quot;: [],&#10;  &quot;SaveButtonBounds&quot;: [],&#10;  &quot;FavoriteButtonBounds&quot;: []&#10;}"
+               enabled="0"/>
+    <Component type="ScriptFloatingTile" id="fltKeyboardChordsBb" x="80.0" y="200.0"
+               width="20" height="60" parentComponent="pnlMain" updateAfterInit="0"
+               ContentType="Keyboard" bgColour="4284769380" itemColour="452984831"
+               itemColour2="4294967295" textColour="0" Data="{&#10;  &quot;KeyWidth&quot;: 30.0,&#10;  &quot;DisplayOctaveNumber&quot;: false,&#10;  &quot;LowKey&quot;: 21,&#10;  &quot;HiKey&quot;: 29,&#10;  &quot;CustomGraphics&quot;: false,&#10;  &quot;DefaultAppearance&quot;: true,&#10;  &quot;BlackKeyRatio&quot;: 0.699999988079071,&#10;  &quot;ToggleMode&quot;: false,&#10;  &quot;MidiChannel&quot;: 1,&#10;  &quot;UseVectorGraphics&quot;: true,&#10;  &quot;UseFlatStyle&quot;: false,&#10;  &quot;MPEKeyboard&quot;: false,&#10;  &quot;MPEStartChannel&quot;: 2,&#10;  &quot;MPEEndChannel&quot;: 16&#10;}"/>
+    <Component type="ScriptFloatingTile" id="fltKeyboardChordsF" x="140.0" y="200.0"
+               width="20" height="60" parentComponent="pnlMain" updateAfterInit="0"
+               ContentType="Keyboard" bgColour="4284769380" itemColour="452984831"
+               itemColour2="4294967295" textColour="0" Data="{&#10;  &quot;KeyWidth&quot;: 30.0,&#10;  &quot;DisplayOctaveNumber&quot;: false,&#10;  &quot;LowKey&quot;: 21,&#10;  &quot;HiKey&quot;: 29,&#10;  &quot;CustomGraphics&quot;: false,&#10;  &quot;DefaultAppearance&quot;: true,&#10;  &quot;BlackKeyRatio&quot;: 0.699999988079071,&#10;  &quot;ToggleMode&quot;: false,&#10;  &quot;MidiChannel&quot;: 1,&#10;  &quot;UseVectorGraphics&quot;: true,&#10;  &quot;UseFlatStyle&quot;: false,&#10;  &quot;MPEKeyboard&quot;: false,&#10;  &quot;MPEStartChannel&quot;: 2,&#10;  &quot;MPEEndChannel&quot;: 16&#10;}"/>
+    <Component type="ScriptFloatingTile" id="fltKeyboardChordsC" x="170.0" y="200.0"
+               width="20" height="60" parentComponent="pnlMain" updateAfterInit="0"
+               ContentType="Keyboard" bgColour="4284769380" itemColour="452984831"
+               itemColour2="4294967295" textColour="0" Data="{&#10;  &quot;KeyWidth&quot;: 30.0,&#10;  &quot;DisplayOctaveNumber&quot;: false,&#10;  &quot;LowKey&quot;: 21,&#10;  &quot;HiKey&quot;: 29,&#10;  &quot;CustomGraphics&quot;: false,&#10;  &quot;DefaultAppearance&quot;: true,&#10;  &quot;BlackKeyRatio&quot;: 0.699999988079071,&#10;  &quot;ToggleMode&quot;: false,&#10;  &quot;MidiChannel&quot;: 1,&#10;  &quot;UseVectorGraphics&quot;: true,&#10;  &quot;UseFlatStyle&quot;: false,&#10;  &quot;MPEKeyboard&quot;: false,&#10;  &quot;MPEStartChannel&quot;: 2,&#10;  &quot;MPEEndChannel&quot;: 16&#10;}"/>
+    <Component type="ScriptFloatingTile" id="fltKeyboardChordsG" x="230.0" y="200.0"
+               width="20" height="60" parentComponent="pnlMain" updateAfterInit="0"
+               ContentType="Keyboard" bgColour="4284769380" itemColour="452984831"
+               itemColour2="4294967295" textColour="0" Data="{&#10;  &quot;KeyWidth&quot;: 30.0,&#10;  &quot;DisplayOctaveNumber&quot;: false,&#10;  &quot;LowKey&quot;: 21,&#10;  &quot;HiKey&quot;: 29,&#10;  &quot;CustomGraphics&quot;: false,&#10;  &quot;DefaultAppearance&quot;: true,&#10;  &quot;BlackKeyRatio&quot;: 0.699999988079071,&#10;  &quot;ToggleMode&quot;: false,&#10;  &quot;MidiChannel&quot;: 1,&#10;  &quot;UseVectorGraphics&quot;: true,&#10;  &quot;UseFlatStyle&quot;: false,&#10;  &quot;MPEKeyboard&quot;: false,&#10;  &quot;MPEStartChannel&quot;: 2,&#10;  &quot;MPEEndChannel&quot;: 16&#10;}"/>
+    <Component type="ScriptFloatingTile" id="fltKeyboardChordsD" x="200.0" y="200.0"
+               width="20" height="60" parentComponent="pnlMain" updateAfterInit="0"
+               ContentType="Keyboard" bgColour="4284769380" itemColour="452984831"
+               itemColour2="4294967295" textColour="0" Data="{&#10;  &quot;KeyWidth&quot;: 30.0,&#10;  &quot;DisplayOctaveNumber&quot;: false,&#10;  &quot;LowKey&quot;: 21,&#10;  &quot;HiKey&quot;: 29,&#10;  &quot;CustomGraphics&quot;: false,&#10;  &quot;DefaultAppearance&quot;: true,&#10;  &quot;BlackKeyRatio&quot;: 0.699999988079071,&#10;  &quot;ToggleMode&quot;: false,&#10;  &quot;MidiChannel&quot;: 1,&#10;  &quot;UseVectorGraphics&quot;: true,&#10;  &quot;UseFlatStyle&quot;: false,&#10;  &quot;MPEKeyboard&quot;: false,&#10;  &quot;MPEStartChannel&quot;: 2,&#10;  &quot;MPEEndChannel&quot;: 16&#10;}"/>
+    <Component type="ScriptFloatingTile" id="fltKeyboardChordsA" x="110.0" y="200.0"
+               width="20" height="60" parentComponent="pnlMain" updateAfterInit="0"
+               ContentType="Keyboard" bgColour="4284769380" itemColour="452984831"
+               itemColour2="4294967295" textColour="0" Data="{&#10;  &quot;KeyWidth&quot;: 30.0,&#10;  &quot;DisplayOctaveNumber&quot;: false,&#10;  &quot;LowKey&quot;: 21,&#10;  &quot;HiKey&quot;: 29,&#10;  &quot;CustomGraphics&quot;: false,&#10;  &quot;DefaultAppearance&quot;: true,&#10;  &quot;BlackKeyRatio&quot;: 0.699999988079071,&#10;  &quot;ToggleMode&quot;: false,&#10;  &quot;MidiChannel&quot;: 1,&#10;  &quot;UseVectorGraphics&quot;: true,&#10;  &quot;UseFlatStyle&quot;: false,&#10;  &quot;MPEKeyboard&quot;: false,&#10;  &quot;MPEStartChannel&quot;: 2,&#10;  &quot;MPEEndChannel&quot;: 16&#10;}"/>
   </Component>
 </ContentProperties>

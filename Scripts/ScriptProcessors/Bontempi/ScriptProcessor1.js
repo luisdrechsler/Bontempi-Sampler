@@ -1,5 +1,4 @@
-
-function onNoteOn()
+ function onNoteOn()
 {
 	
 }
