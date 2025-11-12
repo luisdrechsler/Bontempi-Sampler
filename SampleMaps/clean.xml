@@ -3,13 +3,13 @@
 <samplemap CrossfadeGamma="1.0" ID="Clean" RRGroupAmount="1.0" MicPositions=";">
   <sample Root="73" LoKey="73" HiKey="73" LoVel="0" HiVel="127" RRGroup="1"
           FileName="{PROJECT_FOLDER}Bontempi_Clean_Notes/Bontempi_Clean_Notes_rr1_73_C#4.wav"
-          Duplicate="1"/>
+          Duplicate="1" LoopStart="21862"/>
   <sample Root="68" LoKey="63" HiKey="63" LoVel="0" HiVel="127" RRGroup="1"
           FileName="{PROJECT_FOLDER}Bontempi_Clean_Notes/Bontempi_Clean_Notes_rr1_68.wav"
           Duplicate="1"/>
   <sample Root="71" LoKey="71" HiKey="71" LoVel="0" HiVel="127" RRGroup="1"
           FileName="{PROJECT_FOLDER}Bontempi_Clean_Notes/Bontempi_Clean_Notes_rr1_71_B3.wav"
-          Duplicate="1"/>
+          Duplicate="1" LoopStart="236582" SampleStart="986"/>
   <sample Root="78" LoKey="78" HiKey="78" LoVel="0" HiVel="127" RRGroup="1"
           FileName="{PROJECT_FOLDER}Bontempi_Clean_Notes/Bontempi_Clean_Notes_rr1_78_F#4.wav"
           Duplicate="1"/>
@@ -30,7 +30,7 @@
           Duplicate="1"/>
   <sample Root="74" LoKey="74" HiKey="74" LoVel="0" HiVel="127" RRGroup="1"
           FileName="{PROJECT_FOLDER}Bontempi_Clean_Notes/Bontempi_Clean_Notes_rr1_74_D4.wav"
-          Duplicate="1"/>
+          Duplicate="1" LoopStart="19011" LoopEnabled="0"/>
   <sample Root="76" LoKey="76" HiKey="76" LoVel="0" HiVel="127" RRGroup="1"
           FileName="{PROJECT_FOLDER}Bontempi_Clean_Notes/Bontempi_Clean_Notes_rr1_76_E4.wav"
           Duplicate="1"/>
@@ -69,7 +69,7 @@
           Duplicate="1"/>
   <sample Root="64" LoKey="64" HiKey="64" LoVel="0" HiVel="127" RRGroup="1"
           FileName="{PROJECT_FOLDER}Bontempi_Clean_Notes/Bontempi_Clean_Notes_rr1_64.wav"
-          Duplicate="1"/>
+          Duplicate="1" LoopStart="51714" LoopEnd="56226"/>
   <sample Root="79" LoKey="79" HiKey="79" LoVel="0" HiVel="127" RRGroup="1"
           FileName="{PROJECT_FOLDER}Bontempi_Clean_Notes/Bontempi_Clean_Notes_rr1_79_G4.wav"
           Duplicate="1"/>

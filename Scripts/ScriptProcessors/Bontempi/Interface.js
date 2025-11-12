@@ -1,36 +1,65 @@
-
+// === onInit ===
 Content.makeFrontInterface(800, 300);
+Synth.deferCallbacks(true);
 
 // === onInit ===
+Synth.deferCallbacks(true);
+const NUM_CHANNELS = 2;
 
-// 1) UI
-const var Mix = Content.addKnob("Mix", 10, 10);
-Mix.setRange(0, 1, 0.001);    // 0 = nur sampler0, 1 = nur sampler1
+const var Mix = Content.addKnob("Mix", 20, 20);
+Mix.setRange(0, 1, 0.001);
 Mix.setValue(0.5);
+Mix.set("text", "Mic Mix");
+Mix.set("showValuePopup", true);
 
-// 2) Effekte (Processor Ids exakt wie im Inspector!)
 const var GAIN_A = Synth.getEffect("sampler0FxSimpleGain");
 const var GAIN_B = Synth.getEffect("sampler1FxSimpleGain");
 
-// 3) Hilfsfunktionen
-inline function linToDb(x)
-{
-    return (x <= 0.000001) ? -100.0 : 20.0 * Math.log10(x);
-}
+inline function linToDb(x) { return (x <= 0.000001) ? -100.0 : 20.0 * Math.log10(x); }
 
-inline function updateGains(m) // m in [0..1]
+inline function updateGains(m)
 {
-	
-
     local gA = Math.cos(m * Math.PI * 0.5);
     local gB = Math.sin(m * Math.PI * 0.5);
-
-    // Simple Gain (FX): Attribut 0 = Gain (dB)
-    GAIN_A.setAttribute(0, linToDb(gA));
+    GAIN_A.setAttribute(0, linToDb(gA)); // Attribut 0 = dB
     GAIN_B.setAttribute(0, linToDb(gB));
 }
 
-function onNoteOn()
+inline function onMixChanged(c, v) { updateGains(v); }
+Mix.setControlCallback(onMixChanged);
+
+updateGains(Mix.getValue());
+
+// === On Init ===
+const var noiseSampler = Synth.getSampler("sampler4Noise");
+
+// === On Load ===
+inline function onInitNoise()
+{
+    // Spielt die Note C-2 (MIDI 1) mit Velocity 127
+    Synth.playNote(0, 127);
+}
+onInitNoise();;
+;
+// Simple Gain FX
+const var NoiseGain = Synth.getEffect("sampler4FxSimpleGain");
+
+// Knob
+const var NoiseLevel = Content.addKnob("NoiseLevel", 600, 10);
+NoiseLevel.set("text", "Noise");
+NoiseLevel.set("mode", "Decibel");
+NoiseLevel.setRange(-48, 0, 0.5);   // enger Bereich
+NoiseLevel.setValue(-18);
+
+// Callback
+inline function onNoiseLevelControl(c, value)
+{
+    NoiseGain.setAttribute(0, value);
+}
+NoiseLevel.setControlCallback(onNoiseLevelControl);
+
+// Initial anwenden
+NoiseGain.setAttribute(0, NoiseLevel.getValue());function onNoteOn()
 {
 	
 }
