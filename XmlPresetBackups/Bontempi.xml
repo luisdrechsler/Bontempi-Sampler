@@ -9,8 +9,12 @@
         <Processor Type="ScriptProcessor" ID="Interface" Bypassed="0">
           <ChildProcessors/>
           <Content>
-            <Control type="ScriptSlider" id="Mix" value="0.1480000019073486"/>
-            <Control type="ScriptSlider" id="NoiseLevel" value="-24.0"/>
+            <Control type="ScriptSlider" id="NoiseLevel" value="0.0"/>
+            <Control type="ScriptSlider" id="Mix" value="0.0"/>
+            <Control type="ScriptSlider" id="sldNoiseGain" value="0.0"/>
+            <Control type="ScriptSlider" id="sldMixMic" value="0.0"/>
+            <Control type="ScriptSlider" id="sldGain" value="17.45999908447266"/>
+            <Control type="ScriptSlider" id="ScriptSlider1" value="0.0"/>
           </Content>
           <UIData Source="BontempiUIData"/>
         </Processor>
@@ -30,7 +34,7 @@
       <ChildProcessors>
         <Processor Type="MidiProcessorChain" ID="Midi Processor" Bypassed="0">
           <ChildProcessors>
-            <Processor Type="ScriptProcessor" ID="Script Processor1" Bypassed="0">
+            <Processor Type="ScriptProcessor" ID="scrproMixButtonGoldMikeClean" Bypassed="0">
               <ChildProcessors/>
               <Content>
                 <Control type="ScriptSlider" id="Mix" value="1.0"/>
@@ -57,7 +61,114 @@
           <ChildProcessors/>
         </Processor>
         <Processor Type="EffectChain" ID="FX" Bypassed="0">
-          <ChildProcessors/>
+          <ChildProcessors>
+            <Processor Type="ScriptFX" ID="ScriptFXGain" Bypassed="0">
+              <ChildProcessors/>
+              <RoutingMatrix NumSourceChannels="2" Channel0="0" Send0="-1" Channel1="1" Send1="-1"/>
+              <Content/>
+              <Networks>
+                <Network ID="script_fx1" Version="0.0.0">
+                  <Node FactoryPath="container.chain" ID="script_fx1" Bypassed="0" Name="GainFX"
+                        ShowParameters="1">
+                    <Nodes>
+                      <Node ID="gain" FactoryPath="core.gain" Bypassed="0" Name="gain">
+                        <Parameters>
+                          <Parameter MinValue="-100.0" MaxValue="-24.0" StepSize="0.1000000014901161"
+                                     SkewFactor="3.567047129029115" ID="Gain" Automated="1"/>
+                          <Parameter MinValue="0.0" MaxValue="1000.0" StepSize="0.1000000014901161"
+                                     SkewFactor="0.3010300099849701" ID="Smoothing" Value="292.0000043511391"
+                                     DefaultValue="20.0"/>
+                          <Parameter MinValue="-100.0" MaxValue="0.0" StepSize="0.1000000014901161"
+                                     SkewFactor="5.422270774841309" ID="ResetValue" Value="0.0"/>
+                        </Parameters>
+                      </Node>
+                    </Nodes>
+                    <Parameters>
+                      <Parameter ID="Gain" MinValue="-100.0" MaxValue="24.0" StepSize="0.1000000014901161"
+                                 SkewFactor="1.835784819699001" Value="10.00000163912773" DefaultValue="1.0">
+                        <Connections>
+                          <Connection NodeId="gain" ParameterId="Gain"/>
+                        </Connections>
+                      </Parameter>
+                    </Parameters>
+                  </Node>
+                </Network>
+              </Networks>
+              <UIData>
+                <ContentProperties DeviceType="Desktop"/>
+              </UIData>
+            </Processor>
+            <Processor Type="ScriptFX" ID="Script FXPan" Bypassed="0">
+              <ChildProcessors/>
+              <RoutingMatrix NumSourceChannels="2" Channel0="0" Send0="-1" Channel1="1" Send1="-1"/>
+              <Content/>
+              <Networks>
+                <Network ID="script_fxpan" Version="0.0.0">
+                  <Node FactoryPath="container.chain" ID="script_fxpan" Bypassed="0"
+                        Name="PannerFX" ShowParameters="1">
+                    <Nodes>
+                      <Node ID="xfader" FactoryPath="control.xfader" Bypassed="0" Name="xfader">
+                        <Properties>
+                          <Property ID="NumParameters" Value="2"/>
+                          <Property ID="Mode" Value="RMS"/>
+                        </Properties>
+                        <SwitchTargets>
+                          <SwitchTarget>
+                            <Connections>
+                              <Connection NodeId="gain" ParameterId="Gain"/>
+                            </Connections>
+                          </SwitchTarget>
+                          <SwitchTarget>
+                            <Connections>
+                              <Connection NodeId="gain1" ParameterId="Gain"/>
+                            </Connections>
+                          </SwitchTarget>
+                        </SwitchTargets>
+                        <Parameters>
+                          <Parameter MinValue="0.0" MaxValue="1.0" ID="Value" Automated="1"/>
+                        </Parameters>
+                      </Node>
+                      <Node ID="multi" FactoryPath="container.multi" Bypassed="0" Name="ChannelSplit">
+                        <Nodes>
+                          <Node ID="gain" FactoryPath="core.gain" Bypassed="0" Name="Left">
+                            <Parameters>
+                              <Parameter MinValue="-100.0" MaxValue="0.0" StepSize="0.1000000014901161"
+                                         SkewFactor="5.422270774841309" ID="Gain" Automated="1"/>
+                              <Parameter MinValue="0.0" MaxValue="1000.0" StepSize="0.1000000014901161"
+                                         SkewFactor="0.3010300099849701" ID="Smoothing" Value="20.0"/>
+                              <Parameter MinValue="-100.0" MaxValue="0.0" StepSize="0.1000000014901161"
+                                         SkewFactor="5.422270774841309" ID="ResetValue" Value="0.0"/>
+                            </Parameters>
+                          </Node>
+                          <Node ID="gain1" FactoryPath="core.gain" Bypassed="0" Name="Right">
+                            <Parameters>
+                              <Parameter MinValue="-100.0" MaxValue="0.0" StepSize="0.1000000014901161"
+                                         SkewFactor="5.422270774841309" ID="Gain" Automated="1"/>
+                              <Parameter MinValue="0.0" MaxValue="1000.0" StepSize="0.1000000014901161"
+                                         SkewFactor="0.3010300099849701" ID="Smoothing" Value="20.0"/>
+                              <Parameter MinValue="-100.0" MaxValue="0.0" StepSize="0.1000000014901161"
+                                         SkewFactor="5.422270774841309" ID="ResetValue" Value="0.0"/>
+                            </Parameters>
+                          </Node>
+                        </Nodes>
+                        <Parameters/>
+                      </Node>
+                    </Nodes>
+                    <Parameters>
+                      <Parameter MinValue="-1.0" MaxValue="1.0" ID="Pan" Value="1.0" DefaultValue="0.0">
+                        <Connections>
+                          <Connection NodeId="xfader" ParameterId="Value"/>
+                        </Connections>
+                      </Parameter>
+                    </Parameters>
+                  </Node>
+                </Network>
+              </Networks>
+              <UIData>
+                <ContentProperties DeviceType="Desktop"/>
+              </UIData>
+            </Processor>
+          </ChildProcessors>
         </Processor>
         <Processor Type="StreamingSampler" ID="sampler0notes1" Bypassed="0" Gain="1.0"
                    Balance="0.0" VoiceLimit="256.0" KillFadeTime="20.0" IconColour="0"
@@ -126,7 +237,7 @@
             </Processor>
             <Processor Type="EffectChain" ID="FX" Bypassed="0">
               <ChildProcessors>
-                <Processor Type="SimpleGain" ID="sampler0FxSimpleGain" Bypassed="0" Gain="-0.2368637919425964"
+                <Processor Type="SimpleGain" ID="sampler0FxSimpleGain" Bypassed="0" Gain="0.0"
                            Delay="0.0" Width="100.0" Balance="0.0" InvertPolarity="0.0">
                   <ChildProcessors>
                     <Processor Type="ModulatorChain" ID="Gain Modulation" Bypassed="0" Intensity="1.0">
@@ -305,7 +416,7 @@
                   <ChildProcessors/>
                   <RoutingMatrix NumSourceChannels="2" Channel0="0" Send0="-1" Channel1="1" Send1="-1"/>
                 </Processor>
-                <Processor Type="SimpleGain" ID="sampler1FxSimpleGain" Bypassed="0" Gain="-12.75074863433838"
+                <Processor Type="SimpleGain" ID="sampler1FxSimpleGain" Bypassed="0" Gain="-100.0"
                            Delay="0.0" Width="100.0" Balance="0.0" InvertPolarity="0.0">
                   <ChildProcessors>
                     <Processor Type="ModulatorChain" ID="Gain Modulation" Bypassed="0" Intensity="1.0">
@@ -549,75 +660,75 @@
           <samplemap CrossfadeGamma="1.0" ID="Goldmike" RRGroupAmount="1.0" MicPositions=";">
             <sample Root="60" LoKey="60" HiKey="60" LoVel="0" HiVel="127" RRGroup="1"
                     FileName="{PROJECT_FOLDER}Bontempi_Goldmike_Notes/  Bontempi_Goldmike_Notes_rr1_60_C3.wav"
-                    Duplicate="0" LoopStart="97474" LoopEnd="242019" Normalized="0"
+                    Duplicate="1" LoopStart="97474" LoopEnd="242019" Normalized="0"
                     NormalizedPeak="1.412537217140198" LoopEnabled="1" LoopXFade="20"/>
             <sample Root="61" LoKey="61" HiKey="62" LoVel="0" HiVel="127" RRGroup="1"
                     FileName="{PROJECT_FOLDER}Bontempi_Goldmike_Notes/ Bontempi_Goldmike_Notes_rr1_61_C#3.wav"
-                    Duplicate="0" LoopEnabled="1" LoopStart="115864" LoopEnd="249271"
+                    Duplicate="1" LoopEnabled="1" LoopStart="115864" LoopEnd="249271"
                     LoopXFade="10"/>
             <sample Root="63" LoKey="63" HiKey="63" LoVel="0" HiVel="127" RRGroup="1"
                     FileName="{PROJECT_FOLDER}Bontempi_Goldmike_Notes/  Bontempi_Goldmike_Notes_rr1_63_C#3.wav"
-                    Duplicate="0"/>
+                    Duplicate="1"/>
             <sample Root="64" LoKey="64" HiKey="64" LoVel="0" HiVel="127" RRGroup="1"
                     FileName="{PROJECT_FOLDER}Bontempi_Goldmike_Notes/  Bontempi_Goldmike_Notes_rr1_64_E3.wav"
-                    Duplicate="0"/>
+                    Duplicate="1"/>
             <sample Root="65" LoKey="65" HiKey="65" LoVel="0" HiVel="127" RRGroup="1"
                     FileName="{PROJECT_FOLDER}Bontempi_Goldmike_Notes/  Bontempi_Goldmike_Notes_rr1_65_F3.wav"
-                    Duplicate="0"/>
+                    Duplicate="1"/>
             <sample Root="66" LoKey="66" HiKey="66" LoVel="0" HiVel="127" RRGroup="1"
                     FileName="{PROJECT_FOLDER}Bontempi_Goldmike_Notes/  Bontempi_Goldmike_Notes_rr1_66_F'3.wav"
-                    Duplicate="0"/>
+                    Duplicate="1"/>
             <sample Root="67" LoKey="67" HiKey="67" LoVel="0" HiVel="127" RRGroup="1"
                     FileName="{PROJECT_FOLDER}Bontempi_Goldmike_Notes/  Bontempi_Goldmike_Notes_rr1_67_G3.wav"
-                    Duplicate="0"/>
+                    Duplicate="1"/>
             <sample Root="68" LoKey="68" HiKey="68" LoVel="0" HiVel="127" RRGroup="1"
                     FileName="{PROJECT_FOLDER}Bontempi_Goldmike_Notes/  Bontempi_Goldmike_Notes_rr1_68_G#3.wav"
-                    Duplicate="0"/>
+                    Duplicate="1"/>
             <sample Root="69" LoKey="69" HiKey="69" LoVel="0" HiVel="127" RRGroup="1"
                     FileName="{PROJECT_FOLDER}Bontempi_Goldmike_Notes/  Bontempi_Goldmike_Notes_rr1_69_A3.wav"
-                    Duplicate="0"/>
+                    Duplicate="1"/>
             <sample Root="70" LoKey="70" HiKey="70" LoVel="0" HiVel="127" RRGroup="1"
                     FileName="{PROJECT_FOLDER}Bontempi_Goldmike_Notes/  Bontempi_Goldmike_Notes_rr1_70_A#3.wav"
-                    Duplicate="0"/>
+                    Duplicate="1"/>
             <sample Root="71" LoKey="71" HiKey="71" LoVel="0" HiVel="127" RRGroup="1"
                     FileName="{PROJECT_FOLDER}Bontempi_Goldmike_Notes/  Bontempi_Goldmike_Notes_rr1_71_B3.wav"
-                    Duplicate="0"/>
+                    Duplicate="1"/>
             <sample Root="72" LoKey="72" HiKey="72" LoVel="0" HiVel="127" RRGroup="1"
                     FileName="{PROJECT_FOLDER}Bontempi_Goldmike_Notes/ Bontempi_Goldmike_Notes_rr1_72_C4.wav"
-                    Duplicate="0"/>
+                    Duplicate="1"/>
             <sample Root="73" LoKey="73" HiKey="73" LoVel="0" HiVel="127" RRGroup="1"
                     FileName="{PROJECT_FOLDER}Bontempi_Goldmike_Notes/  Bontempi_Goldmike_Notes_rr1_73_C#4.wav"
-                    Duplicate="0"/>
+                    Duplicate="1"/>
             <sample Root="75" LoKey="75" HiKey="75" LoVel="0" HiVel="127" RRGroup="1"
                     FileName="{PROJECT_FOLDER}Bontempi_Goldmike_Notes/  Bontempi_Goldmike_Notes_rr1_74_D#4.wav"
-                    Duplicate="0"/>
+                    Duplicate="1"/>
             <sample Root="74" LoKey="74" HiKey="74" LoVel="0" HiVel="127" RRGroup="1"
                     FileName="{PROJECT_FOLDER}Bontempi_Goldmike_Notes/  Bontempi_Goldmike_Notes_rr1_74_D4.wav"
-                    Duplicate="0"/>
+                    Duplicate="1"/>
             <sample Root="76" LoKey="76" HiKey="76" LoVel="0" HiVel="127" RRGroup="1"
                     FileName="{PROJECT_FOLDER}Bontempi_Goldmike_Notes/  Bontempi_Goldmike_Notes_rr1_76_E4.wav"
-                    Duplicate="0"/>
+                    Duplicate="1"/>
             <sample Root="77" LoKey="77" HiKey="77" LoVel="0" HiVel="127" RRGroup="1"
                     FileName="{PROJECT_FOLDER}Bontempi_Goldmike_Notes/ Bontempi_Goldmike_Notes_rr1_77_F4.wav"
-                    Duplicate="0"/>
+                    Duplicate="1"/>
             <sample Root="80" LoKey="80" HiKey="80" LoVel="0" HiVel="127" RRGroup="1"
                     FileName="{PROJECT_FOLDER}Bontempi_Goldmike_Notes/Bontempi_Goldmike_Notes_rr1_80_G#4.wav"
-                    Duplicate="0"/>
+                    Duplicate="1"/>
             <sample Root="81" LoKey="81" HiKey="81" LoVel="0" HiVel="127" RRGroup="1"
                     FileName="{PROJECT_FOLDER}Bontempi_Goldmike_Notes/  Bontempi_Goldmike_Notes_rr1_81_A4.wav"
-                    Duplicate="0"/>
+                    Duplicate="1"/>
             <sample Root="82" LoKey="82" HiKey="82" LoVel="0" HiVel="127" RRGroup="1"
                     FileName="{PROJECT_FOLDER}Bontempi_Goldmike_Notes/  Bontempi_Goldmike_Notes_rr1_82_A#4.wav"
-                    Duplicate="0"/>
+                    Duplicate="1"/>
             <sample Root="83" LoKey="83" HiKey="83" LoVel="0" HiVel="127" RRGroup="1"
                     FileName="{PROJECT_FOLDER}Bontempi_Goldmike_Notes/  Bontempi_Goldmike_Notes_rr1_83_B4.wav"
-                    Duplicate="0"/>
+                    Duplicate="1"/>
             <sample Root="84" LoKey="84" HiKey="84" LoVel="0" HiVel="127" RRGroup="1"
                     FileName="{PROJECT_FOLDER}Bontempi_Goldmike_Notes/  Bontempi_Goldmike_Notes_rr1_84_C5.wav"
-                    Duplicate="0"/>
+                    Duplicate="1"/>
             <sample Root="78" LoKey="78" HiKey="79" LoVel="0" HiVel="127" RRGroup="1"
                     FileName="{PROJECT_FOLDER}Bontempi_Goldmike_Notes/  Bontempi_Goldmike_Notes_rr1_87_F#4.wav"
-                    Duplicate="0"/>
+                    Duplicate="1"/>
           </samplemap>
         </Processor>
         <Processor Type="StreamingSampler" ID="sampler4Noise" Bypassed="0" Gain="1.0"
@@ -668,7 +779,7 @@
             </Processor>
             <Processor Type="EffectChain" ID="FX" Bypassed="0">
               <ChildProcessors>
-                <Processor Type="SimpleGain" ID="sampler4FxSimpleGain" Bypassed="0" Gain="-24.0"
+                <Processor Type="SimpleGain" ID="sampler4FxSimpleGain" Bypassed="0" Gain="0.0"
                            Delay="0.0" Width="100.0" Balance="0.0" InvertPolarity="0.0">
                   <ChildProcessors>
                     <Processor Type="ModulatorChain" ID="Gain Modulation" Bypassed="0" Intensity="1.0">
@@ -732,7 +843,7 @@
     <Controller Controller="2" Processor="Interface" MacroIndex="-1" Start="0.0"
                 End="1.0" FullStart="0.0" FullEnd="1.0" Skew="1.0" Interval="0.01"
                 Converter="37.nT6K8CBGgC..VEFa0U1Pu4lckIGckIG.ADPXiQWZ1UF.ADf..."
-                Attribute="fltPresetBroswer" Inverted="0"/>
+                Attribute="sldMixMic" Inverted="0"/>
   </MidiAutomation>
   <MPEData Enabled="0"/>
 </Processor>

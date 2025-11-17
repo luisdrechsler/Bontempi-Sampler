@@ -2,6 +2,7 @@
 Content.makeFrontInterface(800, 300);
 Synth.deferCallbacks(true);
 
+
 // === onInit ===
 Synth.deferCallbacks(true);
 const NUM_CHANNELS = 2;
@@ -59,7 +60,12 @@ inline function onNoiseLevelControl(c, value)
 NoiseLevel.setControlCallback(onNoiseLevelControl);
 
 // Initial anwenden
-NoiseGain.setAttribute(0, NoiseLevel.getValue());function onNoteOn()
+NoiseGain.setAttribute(0, NoiseLevel.getValue());
+
+
+
+
+function onNoteOn()
 {
 	
 }
