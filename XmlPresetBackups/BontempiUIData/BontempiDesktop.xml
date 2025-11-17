@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <ContentProperties DeviceType="Desktop">
-  <Component type="ScriptPanel" id="pnlMain" x="0.0" y="0.0" width="800.0"
+  <Component type="ScriptPanel" id="pnlMain" x="-1.0" y="0.0" width="800.0"
              height="300.0" itemColour2="818112359" borderRadius="0.0" textColour="587202560">
     <Component type="ScriptSlider" id="NoiseLevel" x="600" y="10" middlePosition="-18.0"
                stepSize="0.5" min="-48.0" max="0.0" suffix=" dB" text="Noise"
@@ -17,6 +17,9 @@
     <Component type="ScriptSlider" id="sldGain" x="600.0" y="110.0" width="130"
                height="50" parentComponent="pnlMain" isMetaParameter="1" min="-100.0"
                max="24.0" text="Gain" processorId="ScriptFXGain" parameterId="Gain"/>
+    <Component type="ScriptSlider" id="sldPan" x="460.0" y="50.0" width="130"
+               height="50" parentComponent="pnlMain" isPluginParameter="1" processorId="Script FXPan"
+               parameterId="Pan" min="-1.0" middlePosition="0.0" text="Pan"/>
     <Component type="ScriptFloatingTile" id="fltKeyboard" x="351.0" y="240.0"
                width="449.0" height="60.0" parentComponent="pnlMain" updateAfterInit="0"
                ContentType="Keyboard" bgColour="4284769380" itemColour="452984831"
@@ -54,8 +57,9 @@
                width="20.0" height="60.0" parentComponent="pnlMain" updateAfterInit="0"
                ContentType="Keyboard" bgColour="4284769380" itemColour="452984831"
                itemColour2="4294967295" textColour="0" Data="{&#10;  &quot;KeyWidth&quot;: 30.0,&#10;  &quot;DisplayOctaveNumber&quot;: false,&#10;  &quot;LowKey&quot;: 45,&#10;  &quot;HiKey&quot;: 45,&#10;  &quot;CustomGraphics&quot;: false,&#10;  &quot;DefaultAppearance&quot;: true,&#10;  &quot;BlackKeyRatio&quot;: 0.699999988079071,&#10;  &quot;ToggleMode&quot;: false,&#10;  &quot;MidiChannel&quot;: 1,&#10;  &quot;UseVectorGraphics&quot;: true,&#10;  &quot;UseFlatStyle&quot;: false,&#10;  &quot;MPEKeyboard&quot;: false,&#10;  &quot;MPEStartChannel&quot;: 2,&#10;  &quot;MPEEndChannel&quot;: 16&#10;}"/>
-    <Component type="ScriptSlider" id="ScriptSlider1" x="460.0" y="50.0" width="130"
-               height="50" parentComponent="pnlMain" text="sldPan" isPluginParameter="1"
-               processorId="Script FXPan" parameterId="Pan" min="-1.0" middlePosition="0.0"/>
+    <Component type="ScriptSlider" id="sldReverbDryWet" x="461.0" y="100.0"
+               width="130" height="50" parentComponent="pnlMain" text="Dry/Wet"
+               max="100.0" middlePosition="50.0" processorId="ScriptFXReverbDryWet"
+               parameterId="Dry/Wet" defaultValue="20.0" showTextBox="0"/>
   </Component>
 </ContentProperties>
