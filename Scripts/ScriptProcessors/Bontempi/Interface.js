@@ -45,27 +45,26 @@ onInitNoise();;
 // Simple Gain FX
 const var NoiseGain = Synth.getEffect("sampler4FxSimpleGain");
 
-// Knob
-const var NoiseLevel = Content.addKnob("NoiseLevel", 600, 10);
+// Vorhandenen Slider aus dem Interface holen
+const var NoiseLevel = Content.getComponent("sldNoiseGain");
+
+// Einstellungen (falls du sie per Script setzen willst)
 NoiseLevel.set("text", "Noise");
 NoiseLevel.set("mode", "Decibel");
-NoiseLevel.setRange(-48, 0, 0.5);   // enger Bereich
+NoiseLevel.setRange(-48, 0, 0.5);
 NoiseLevel.setValue(-18);
 
 // Callback
-inline function onNoiseLevelControl(c, value)
+inline function onNoiseLevelControl(component, value)
 {
+    // Gain-Attribut 0 in dB steuern
     NoiseGain.setAttribute(0, value);
 }
+
 NoiseLevel.setControlCallback(onNoiseLevelControl);
 
 // Initial anwenden
-NoiseGain.setAttribute(0, NoiseLevel.getValue());
-
-
-
-
-function onNoteOn()
+NoiseGain.setAttribute(0, NoiseLevel.getValue());function onNoteOn()
 {
 	
 }
