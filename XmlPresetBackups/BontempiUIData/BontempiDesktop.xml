@@ -3,11 +3,13 @@
 <ContentProperties DeviceType="Desktop">
   <Component type="ScriptPanel" id="pnlMain" x="0.0" y="0.0" width="800.0"
              height="300.0" itemColour2="818112359" borderRadius="0.0" textColour="587202560">
-    <Component type="ScriptSlider" id="NoiseLevel" x="600" y="10" middlePosition="-18.0"
+    <Component type="ScriptSlider" id="knbStereo" x="20" y="20" stepSize="1.0"
+               max="100.0" text="Stereo / Chorus" parentComponent="pnlMain"/>
+    <Component type="ScriptSlider" id="NoiseLevel" x="600.0" y="10.0" middlePosition="-18.0"
                stepSize="0.5" min="-48.0" max="0.0" suffix=" dB" text="Noise"
                mode="Decibel" parentComponent="pnlMain"/>
-    <Component type="ScriptSlider" id="Mix" x="460.0" y="110.0" stepSize="0.001"
-               text="Mic Mix" showValuePopup="1" parentComponent="pnlMain"/>
+    <Component type="ScriptSlider" id="Mix" x="20" y="20" stepSize="0.001" text="Mic Mix"
+               showValuePopup="1" parentComponent="pnlMain"/>
     <Component type="ScriptSlider" id="sldNoiseGain" x="600.0" y="10.0" middlePosition="-18.0"
                stepSize="0.5" min="-48.0" max="0.0" suffix=" dB" text="Noise"
                mode="Decibel" parentComponent="pnlMain"/>

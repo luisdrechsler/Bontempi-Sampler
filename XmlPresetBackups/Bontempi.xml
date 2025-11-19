@@ -9,12 +9,13 @@
         <Processor Type="ScriptProcessor" ID="Interface" Bypassed="0">
           <ChildProcessors/>
           <Content>
+            <Control type="ScriptSlider" id="knbStereo" value="100.0"/>
             <Control type="ScriptSlider" id="NoiseLevel" value="0.0"/>
             <Control type="ScriptSlider" id="Mix" value="0.0"/>
-            <Control type="ScriptSlider" id="sldNoiseGain" value="-48.0"/>
+            <Control type="ScriptSlider" id="sldNoiseGain" value="-7.5"/>
             <Control type="ScriptSlider" id="sldMixMic" value="0.0"/>
             <Control type="ScriptSlider" id="sldGain" value="24.0"/>
-            <Control type="ScriptSlider" id="sldPan" value="0.0"/>
+            <Control type="ScriptSlider" id="sldPan" value="-0.1299999952316284"/>
           </Content>
           <UIData Source="BontempiUIData"/>
         </Processor>
@@ -62,37 +63,28 @@
         </Processor>
         <Processor Type="EffectChain" ID="FX" Bypassed="0">
           <ChildProcessors>
-            <Processor Type="ScriptFX" ID="ScriptFXGain" Bypassed="0">
+            <Processor Type="Analyser" ID="Analyser1" Bypassed="0" BufferSize="8192.0"
+                       PreviewType="2.0">
+              <ChildProcessors/>
+              <RoutingMatrix NumSourceChannels="2" Channel0="0" Send0="-1" Channel1="1" Send1="-1"/>
+            </Processor>
+            <Processor Type="ScriptFX" ID="Script FX1" Bypassed="0">
               <ChildProcessors/>
               <RoutingMatrix NumSourceChannels="2" Channel0="0" Send0="-1" Channel1="1" Send1="-1"/>
               <Content/>
               <Networks>
-                <Network ID="script_fx1" Version="0.0.0">
-                  <Node FactoryPath="container.chain" ID="script_fx1" Bypassed="0" Name="GainFX"
-                        ShowParameters="1">
-                    <Nodes>
-                      <Node ID="gain" FactoryPath="core.gain" Bypassed="0" Name="gain">
-                        <Parameters>
-                          <Parameter MinValue="-100.0" MaxValue="-24.0" StepSize="0.1000000014901161"
-                                     SkewFactor="3.567047129029115" ID="Gain" Automated="1"/>
-                          <Parameter MinValue="0.0" MaxValue="1000.0" StepSize="0.1000000014901161"
-                                     SkewFactor="0.3010300099849701" ID="Smoothing" Value="292.0000043511391"
-                                     DefaultValue="20.0"/>
-                          <Parameter MinValue="-100.0" MaxValue="0.0" StepSize="0.1000000014901161"
-                                     SkewFactor="5.422270774841309" ID="ResetValue" Value="0.0"/>
-                        </Parameters>
-                      </Node>
-                    </Nodes>
-                    <Parameters>
-                      <Parameter ID="Gain" MinValue="-100.0" MaxValue="24.0" StepSize="0.1000000014901161"
-                                 SkewFactor="1.835784819699001" Value="10.00000163912773" DefaultValue="1.0">
-                        <Connections>
-                          <Connection NodeId="gain" ParameterId="Gain"/>
-                        </Connections>
-                      </Parameter>
-                    </Parameters>
-                  </Node>
-                </Network>
+                <Network ID="Stereo" Version="0.0.0"/>
+              </Networks>
+              <UIData>
+                <ContentProperties DeviceType="Desktop"/>
+              </UIData>
+            </Processor>
+            <Processor Type="ScriptFX" ID="ScriptFXWidth" Bypassed="0" NumFilters="1">
+              <ChildProcessors/>
+              <RoutingMatrix NumSourceChannels="2" Channel0="0" Send0="-1" Channel1="1" Send1="-1"/>
+              <Content/>
+              <Networks>
+                <Network ID="Width" Version="0.0.0"/>
               </Networks>
               <UIData>
                 <ContentProperties DeviceType="Desktop"/>
@@ -103,70 +95,27 @@
               <RoutingMatrix NumSourceChannels="2" Channel0="0" Send0="-1" Channel1="1" Send1="-1"/>
               <Content/>
               <Networks>
-                <Network ID="script_fxpan" Version="0.0.0">
-                  <Node FactoryPath="container.chain" ID="script_fxpan" Bypassed="0"
-                        Name="PannerFX" ShowParameters="1">
-                    <Nodes>
-                      <Node ID="xfader" FactoryPath="control.xfader" Bypassed="0" Name="xfader">
-                        <Properties>
-                          <Property ID="NumParameters" Value="2"/>
-                          <Property ID="Mode" Value="RMS"/>
-                        </Properties>
-                        <SwitchTargets>
-                          <SwitchTarget>
-                            <Connections>
-                              <Connection NodeId="gain" ParameterId="Gain"/>
-                            </Connections>
-                          </SwitchTarget>
-                          <SwitchTarget>
-                            <Connections>
-                              <Connection NodeId="gain1" ParameterId="Gain"/>
-                            </Connections>
-                          </SwitchTarget>
-                        </SwitchTargets>
-                        <Parameters>
-                          <Parameter MinValue="0.0" MaxValue="1.0" ID="Value" Automated="1"/>
-                        </Parameters>
-                      </Node>
-                      <Node ID="multi" FactoryPath="container.multi" Bypassed="0" Name="ChannelSplit">
-                        <Nodes>
-                          <Node ID="gain" FactoryPath="core.gain" Bypassed="0" Name="Left">
-                            <Parameters>
-                              <Parameter MinValue="-100.0" MaxValue="0.0" StepSize="0.1000000014901161"
-                                         SkewFactor="5.422270774841309" ID="Gain" Automated="1"/>
-                              <Parameter MinValue="0.0" MaxValue="1000.0" StepSize="0.1000000014901161"
-                                         SkewFactor="0.3010300099849701" ID="Smoothing" Value="20.0"/>
-                              <Parameter MinValue="-100.0" MaxValue="0.0" StepSize="0.1000000014901161"
-                                         SkewFactor="5.422270774841309" ID="ResetValue" Value="0.0"/>
-                            </Parameters>
-                          </Node>
-                          <Node ID="gain1" FactoryPath="core.gain" Bypassed="0" Name="Right">
-                            <Parameters>
-                              <Parameter MinValue="-100.0" MaxValue="0.0" StepSize="0.1000000014901161"
-                                         SkewFactor="5.422270774841309" ID="Gain" Automated="1"/>
-                              <Parameter MinValue="0.0" MaxValue="1000.0" StepSize="0.1000000014901161"
-                                         SkewFactor="0.3010300099849701" ID="Smoothing" Value="20.0"/>
-                              <Parameter MinValue="-100.0" MaxValue="0.0" StepSize="0.1000000014901161"
-                                         SkewFactor="5.422270774841309" ID="ResetValue" Value="0.0"/>
-                            </Parameters>
-                          </Node>
-                        </Nodes>
-                        <Parameters/>
-                      </Node>
-                    </Nodes>
-                    <Parameters>
-                      <Parameter MinValue="-1.0" MaxValue="1.0" ID="Pan" Value="1.0" DefaultValue="0.0">
-                        <Connections>
-                          <Connection NodeId="xfader" ParameterId="Value"/>
-                        </Connections>
-                      </Parameter>
-                    </Parameters>
-                  </Node>
-                </Network>
+                <Network ID="script_fxpan" Version="0.0.0"/>
               </Networks>
               <UIData>
                 <ContentProperties DeviceType="Desktop"/>
               </UIData>
+            </Processor>
+            <Processor Type="ScriptFX" ID="ScriptFXGain" Bypassed="0">
+              <ChildProcessors/>
+              <RoutingMatrix NumSourceChannels="2" Channel0="0" Send0="-1" Channel1="1" Send1="-1"/>
+              <Content/>
+              <Networks>
+                <Network ID="script_fx1" Version="0.0.0"/>
+              </Networks>
+              <UIData>
+                <ContentProperties DeviceType="Desktop"/>
+              </UIData>
+            </Processor>
+            <Processor Type="Chorus" ID="FXChorus" Bypassed="1" Rate="0.09000000357627869"
+                       Width="0.2000000029802322" Feedback="0.1899999976158142" Delay="0.300000011920929">
+              <ChildProcessors/>
+              <RoutingMatrix NumSourceChannels="2" Channel0="0" Send0="-1" Channel1="1" Send1="-1"/>
             </Processor>
           </ChildProcessors>
         </Processor>
@@ -779,7 +728,7 @@
             </Processor>
             <Processor Type="EffectChain" ID="FX" Bypassed="0">
               <ChildProcessors>
-                <Processor Type="SimpleGain" ID="sampler4FxSimpleGain" Bypassed="0" Gain="-48.0"
+                <Processor Type="SimpleGain" ID="sampler4FxSimpleGain" Bypassed="0" Gain="-7.5"
                            Delay="0.0" Width="100.0" Balance="0.0" InvertPolarity="0.0">
                   <ChildProcessors>
                     <Processor Type="ModulatorChain" ID="Gain Modulation" Bypassed="0" Intensity="1.0">
@@ -811,6 +760,46 @@
             <channelData enabled="1" level="0.0" suffix=""/>
           </channels>
         </Processor>
+        <Processor Type="WaveSynth" ID="Waveform Generator1" Bypassed="0" Gain="0.25"
+                   Balance="0.0" VoiceLimit="256.0" KillFadeTime="20.0" IconColour="0"
+                   OctaveTranspose1="0.0" SemiTones1="0.0" OctaveTranspose2="0.0"
+                   SemiTones2="0.0" Detune1="0.0" Detune2="0.0" WaveForm1="3.0"
+                   WaveForm2="5.0" Pan1="0.0" Pan2="100.0" Mix="0.1500000059604645"
+                   EnableSecondOscillator="1.0" PulseWidth1="0.5" PulseWidth2="0.5"
+                   HardSync="0.0">
+          <ChildProcessors>
+            <Processor Type="MidiProcessorChain" ID="Midi Processor" Bypassed="0">
+              <ChildProcessors/>
+            </Processor>
+            <Processor Type="ModulatorChain" ID="GainModulation" Bypassed="0" Intensity="1.0">
+              <ChildProcessors>
+                <Processor Type="SimpleEnvelope" ID="DefaultEnvelope1" Bypassed="0" Monophonic="0.0"
+                           Retrigger="1.0" Intensity="1.0" Attack="5.0" Release="10.0" LinearMode="1.0">
+                  <ChildProcessors>
+                    <Processor Type="ModulatorChain" ID="Attack Time Modulation" Bypassed="0"
+                               Intensity="1.0">
+                      <ChildProcessors/>
+                    </Processor>
+                  </ChildProcessors>
+                </Processor>
+              </ChildProcessors>
+            </Processor>
+            <Processor Type="ModulatorChain" ID="PitchModulation" Bypassed="0" Intensity="0.0">
+              <ChildProcessors/>
+            </Processor>
+            <Processor Type="EffectChain" ID="FX" Bypassed="0">
+              <ChildProcessors/>
+            </Processor>
+            <Processor Type="ModulatorChain" ID="Mix Modulation" Bypassed="0" Intensity="1.0">
+              <ChildProcessors/>
+            </Processor>
+            <Processor Type="ModulatorChain" ID="Osc2 Pitch Modulation" Bypassed="0"
+                       Intensity="0.0">
+              <ChildProcessors/>
+            </Processor>
+          </ChildProcessors>
+          <RoutingMatrix NumSourceChannels="2" Channel0="0" Send0="-1" Channel1="1" Send1="-1"/>
+        </Processor>
       </ChildProcessors>
       <RoutingMatrix NumSourceChannels="2" Channel0="0" Send0="-1" Channel1="1" Send1="-1"/>
     </Processor>
@@ -830,6 +819,9 @@
       <controlled_parameter id="sampler1FxSimpleGain" parameter="4" parameter_name="Default"
                             min="0.0" max="127.0" low="0.0" high="127.0" skew="1.0" step="0.01"
                             inverted="0" readonly="1" converter="37.nT6K8CBGgC..VEFa0U1Pu4lckIGckIG.ADPXiQWZ1UF.ADf..."/>
+      <controlled_parameter id="FXChorus" parameter="1" parameter_name="Width" min="0.0"
+                            max="1.0" low="0.0" high="1.0" skew="1.0" step="0.01" inverted="0"
+                            readonly="1" converter="79.nT6K8CRR0H..RRHDW.XvM77RQKadk.QeayxTXCPtZNBJILkB28jr2i3af7.pJU3UwQ.ucoMZYoa3XvCflRrk.Du2zFkF7327a6h3LUdD.."/>
     </macro>
     <macro name="Macro 2" value="0.0" midi_cc="-1"/>
     <macro name="Macro 3" value="0.0" midi_cc="-1"/>
@@ -843,7 +835,7 @@
     <Controller Controller="2" Processor="Interface" MacroIndex="-1" Start="0.0"
                 End="1.0" FullStart="0.0" FullEnd="1.0" Skew="1.0" Interval="0.01"
                 Converter="37.nT6K8CBGgC..VEFa0U1Pu4lckIGckIG.ADPXiQWZ1UF.ADf..."
-                Attribute="sldMixMic" Inverted="0"/>
+                Attribute="sldNoiseGain" Inverted="0"/>
   </MidiAutomation>
   <MPEData Enabled="0"/>
 </Processor>

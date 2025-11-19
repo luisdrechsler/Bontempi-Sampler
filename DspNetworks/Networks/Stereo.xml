@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Network ID="Stereo" Version="0.0.0">
+  <Node FactoryPath="container.chain" ID="Stereo" Bypassed="0" Name="Stereo">
+    <Nodes>
+      <Node ID="multi" FactoryPath="container.multi" Bypassed="0" Name="multi">
+        <Nodes>
+          <Node ID="chain" FactoryPath="container.chain" Bypassed="0" Name="chain">
+            <Nodes>
+              <Node ID="fix_delay" FactoryPath="core.fix_delay" Bypassed="0" Name="fix_delay">
+                <Parameters>
+                  <Parameter MinValue="0.0" MaxValue="1000.0" StepSize="0.1000000014901161"
+                             SkewFactor="0.3010300099849701" ID="DelayTime" Value="0.3000000044703484"
+                             DefaultValue="100.0"/>
+                  <Parameter MinValue="0.0" MaxValue="1024.0" StepSize="1.0" ID="FadeTime"
+                             Value="512.0"/>
+                </Parameters>
+              </Node>
+              <Node ID="svf_eq" FactoryPath="filters.svf_eq" Bypassed="0" Name="svf_eq">
+                <ComplexData>
+                  <Filters>
+                    <Filter Index="-1"/>
+                  </Filters>
+                </ComplexData>
+                <Parameters>
+                  <Parameter MinValue="20.0" MaxValue="20000.0" SkewFactor="0.2299045622348785"
+                             ID="Frequency" Value="8080.48822820205" DefaultValue="1000.0"/>
+                  <Parameter MinValue="0.300000011920929" MaxValue="9.899999618530273" SkewFactor="0.2647178173065186"
+                             ID="Q" Value="1.034487874902408" DefaultValue="1.0"/>
+                  <Parameter MinValue="-18.0" MaxValue="18.0" ID="Gain" Value="-9.326812499999999"
+                             DefaultValue="0.0"/>
+                  <Parameter MinValue="0.0" MaxValue="1.0" SkewFactor="0.3010300099849701"
+                             ID="Smoothing" Value="0.04683966298096325" DefaultValue="0.009999999776482582"/>
+                  <Parameter MinValue="0.0" MaxValue="4.0" StepSize="1.0" ID="Mode" Value="0.0"/>
+                  <Parameter MinValue="0.0" MaxValue="1.0" StepSize="1.0" ID="Enabled" Value="1.0"/>
+                </Parameters>
+              </Node>
+            </Nodes>
+            <Parameters/>
+          </Node>
+          <Node ID="chain1" FactoryPath="container.chain" Bypassed="0" Name="chain1">
+            <Nodes>
+              <Node ID="fix_delay1" FactoryPath="core.fix_delay" Bypassed="0" Name="fix_delay1">
+                <Parameters>
+                  <Parameter MinValue="0.0" MaxValue="1000.0" StepSize="0.1000000014901161"
+                             SkewFactor="0.3010300099849701" ID="DelayTime" Value="7.20000010728836"
+                             DefaultValue="100.0"/>
+                  <Parameter MinValue="0.0" MaxValue="1024.0" StepSize="1.0" ID="FadeTime"
+                             Value="512.0"/>
+                </Parameters>
+              </Node>
+              <Node ID="svf_eq1" FactoryPath="filters.svf_eq" Bypassed="0" Name="svf_eq1">
+                <ComplexData>
+                  <Filters>
+                    <Filter Index="-1"/>
+                  </Filters>
+                </ComplexData>
+                <Parameters>
+                  <Parameter MinValue="20.0" MaxValue="20000.0" SkewFactor="0.2299045622348785"
+                             ID="Frequency" Value="5936.359370371424" DefaultValue="1000.0"/>
+                  <Parameter MinValue="0.300000011920929" MaxValue="9.899999618530273" SkewFactor="0.2647178173065186"
+                             ID="Q" Value="0.7349609198910489" DefaultValue="1.0"/>
+                  <Parameter MinValue="-18.0" MaxValue="18.0" ID="Gain" Value="0.0"/>
+                  <Parameter MinValue="0.0" MaxValue="1.0" SkewFactor="0.3010300099849701"
+                             ID="Smoothing" Value="0.009999999776482582"/>
+                  <Parameter MinValue="0.0" MaxValue="4.0" StepSize="1.0" ID="Mode" Value="0.0"/>
+                  <Parameter MinValue="0.0" MaxValue="1.0" StepSize="1.0" ID="Enabled" Value="1.0"/>
+                </Parameters>
+              </Node>
+            </Nodes>
+            <Parameters/>
+          </Node>
+        </Nodes>
+        <Parameters/>
+      </Node>
+    </Nodes>
+    <Parameters/>
+  </Node>
+</Network>

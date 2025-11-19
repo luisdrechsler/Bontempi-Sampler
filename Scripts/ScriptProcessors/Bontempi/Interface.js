@@ -64,7 +64,45 @@ inline function onNoiseLevelControl(component, value)
 NoiseLevel.setControlCallback(onNoiseLevelControl);
 
 // Initial anwenden
-NoiseGain.setAttribute(0, NoiseLevel.getValue());function onNoteOn()
+NoiseGain.setAttribute(0, NoiseLevel.getValue());
+
+// 1) Effekte holen (IDs müssen exakt wie im FX-Baum heißen!)
+const var WidthFX  = Synth.getEffect("ScriptFXWidth");
+const var ChorusFX = Synth.getEffect("FXChorus");
+
+// 2) Regler anlegen
+const var knbStereo = Content.addKnob("knbStereo", 20, 20);
+knbStereo.set("text", "Stereo / Chorus");
+knbStereo.setRange(0, 100, 1);    // 0–100 %
+knbStereo.setValue(50);           // Start in der Mitte
+
+// 3) Callback: EIN Regler steuert WidthFX + Chorus
+inline function onknbStereoControl(component, value)
+{
+    // value: 0..100
+    local norm = value / 100.0;      // 0..1
+
+    // --- a) WidthFX: -100 bis +200 (linear) ---
+    // Range = 300, Start = -100
+    local widthVal = -1 + norm * 3;   // -100..200
+    WidthFX.setAttribute(WidthFX.Width, widthVal);
+
+    // --- b) Chorus Depth: logarithmisch von 0.10 bis 0.20 ---
+    // Formel: depth = min * (max/min) ^ norm
+    local minDepth = 0.10;
+    local maxDepth = 0.20;
+    local ratio    = maxDepth / minDepth;     // = 2.0
+
+    local depth = minDepth * Math.pow(ratio, norm); // 0.10..0.20, log-skaliert
+
+    ChorusFX.setAttribute(ChorusFX.Width, depth);
+}
+
+knbStereo.setControlCallback(onknbStereoControl);
+
+// 4) Startwerte an beide FX schicken
+onknbStereoControl(knbStereo, knbStereo.getValue());
+function onNoteOn()
 {
 	
 }
