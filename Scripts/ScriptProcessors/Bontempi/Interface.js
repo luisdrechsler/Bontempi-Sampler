@@ -66,41 +66,39 @@ NoiseLevel.setControlCallback(onNoiseLevelControl);
 // Initial anwenden
 NoiseGain.setAttribute(0, NoiseLevel.getValue());
 
-// 1) Effekte holen (IDs müssen exakt wie im FX-Baum heißen!)
-const var WidthFX  = Synth.getEffect("ScriptFXWidth");
-const var ChorusFX = Synth.getEffect("FXChorus");
+// 1) Effekte holen
+const var WidthFX    = Synth.getEffect("ScriptFXWidth");
+const var ChorusFXL  = Synth.getEffect("FXChorusL");
+const var ChorusFXR  = Synth.getEffect("FXChorusR");
 
 // 2) Regler anlegen
 const var knbStereo = Content.addKnob("knbStereo", 20, 20);
 knbStereo.set("text", "Stereo / Chorus");
-knbStereo.setRange(0, 100, 1);    // 0–100 %
-knbStereo.setValue(50);           // Start in der Mitte
+knbStereo.setRange(0, 100, 1);
+knbStereo.setValue(50);
 
-// 3) Callback: EIN Regler steuert WidthFX + Chorus
+// 3) Callback
 inline function onknbStereoControl(component, value)
 {
-    // value: 0..100
-    local norm = value / 100.0;      // 0..1
+    local norm = value / 100.0;
 
-    // --- a) WidthFX: -100 bis +200 (linear) ---
-    // Range = 300, Start = -100
-    local widthVal = -1 + norm * 3;   // -100..200
+    // a) Width FX
+    local widthVal = -1 + norm * 3;
     WidthFX.setAttribute(WidthFX.Width, widthVal);
 
-    // --- b) Chorus Depth: logarithmisch von 0.10 bis 0.20 ---
-    // Formel: depth = min * (max/min) ^ norm
-    local minDepth = 0.10;
-    local maxDepth = 0.20;
-    local ratio    = maxDepth / minDepth;     // = 2.0
+    // b) Chorus Depth log
+    local minDepth = 0.00;
+    local maxDepth = 0.40;
+    local ratio = maxDepth / minDepth;
 
-    local depth = minDepth * Math.pow(ratio, norm); // 0.10..0.20, log-skaliert
+    local depth = minDepth * Math.pow(ratio, norm);
 
-    ChorusFX.setAttribute(ChorusFX.Width, depth);
+    // Attribute hier korrekt ersetzen!
+    ChorusFXL.setAttribute(ChorusFXL.Width, depth);
+    ChorusFXR.setAttribute(ChorusFXR.Width, depth);
 }
 
 knbStereo.setControlCallback(onknbStereoControl);
-
-// 4) Startwerte an beide FX schicken
 onknbStereoControl(knbStereo, knbStereo.getValue());
 function onNoteOn()
 {

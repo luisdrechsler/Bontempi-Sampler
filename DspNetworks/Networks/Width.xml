@@ -95,6 +95,19 @@
             </Nodes>
             <Parameters/>
           </Node>
+          <Node ID="multi2" FactoryPath="container.multi" Bypassed="0" Name="multi2">
+            <Nodes>
+              <Node ID="chain" FactoryPath="container.chain" Bypassed="0" Name="chain">
+                <Nodes/>
+                <Parameters/>
+              </Node>
+              <Node ID="chain2" FactoryPath="container.chain" Bypassed="0" Name="chain2">
+                <Nodes/>
+                <Parameters/>
+              </Node>
+            </Nodes>
+            <Parameters/>
+          </Node>
           <Node ID="ms_encode1" FactoryPath="routing.ms_encode" Bypassed="0"
                 Name="ms_encode1" Folded="1">
             <Parameters/>
@@ -105,7 +118,7 @@
     </Nodes>
     <Parameters>
       <Parameter ID="Width" MinValue="-100.0" MaxValue="2.0" StepSize="0.1000000014901161"
-                 SkewFactor="5.422270774841309" Value="2.0" DefaultValue="1.0">
+                 SkewFactor="5.422270774841309" Value="1.700001515448079" DefaultValue="1.0">
         <Connections>
           <Connection NodeId="smoothed_parameter" ParameterId="Value"/>
           <Connection NodeId="gain1" ParameterId="Gain"/>
