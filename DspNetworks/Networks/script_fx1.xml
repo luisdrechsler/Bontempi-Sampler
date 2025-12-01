@@ -1,26 +1,71 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <Network ID="script_fx1" Version="0.0.0">
-  <Node FactoryPath="container.chain" ID="script_fx1" Bypassed="0" Name="GainFX"
-        ShowParameters="1">
+  <Node FactoryPath="container.chain" ID="script_fx1" Bypassed="0" ShowParameters="1"
+        Name="script_fx1">
     <Nodes>
-      <Node ID="gain" FactoryPath="core.gain" Bypassed="0" Name="gain">
+      <Node ID="xfader" FactoryPath="control.xfader" Bypassed="0" Name="xfader">
+        <Properties>
+          <Property ID="NumParameters" Value="2"/>
+          <Property ID="Mode" Value="Overlap"/>
+        </Properties>
+        <SwitchTargets>
+          <SwitchTarget>
+            <Connections>
+              <Connection NodeId="gain" ParameterId="Gain"/>
+            </Connections>
+          </SwitchTarget>
+          <SwitchTarget>
+            <Connections>
+              <Connection NodeId="gain1" ParameterId="Gain"/>
+            </Connections>
+          </SwitchTarget>
+        </SwitchTargets>
         <Parameters>
-          <Parameter MinValue="-100.0" MaxValue="-24.0" StepSize="0.1000000014901161"
-                     SkewFactor="3.567047129029115" ID="Gain" Automated="1"/>
-          <Parameter MinValue="0.0" MaxValue="1000.0" StepSize="0.1000000014901161"
-                     SkewFactor="0.3010300099849701" ID="Smoothing" Value="292.0000043511391"
-                     DefaultValue="20.0"/>
-          <Parameter MinValue="-100.0" MaxValue="0.0" StepSize="0.1000000014901161"
-                     SkewFactor="5.422270774841309" ID="ResetValue" Value="0.0"/>
+          <Parameter MinValue="0.0" MaxValue="1.0" ID="Value" Automated="1" DefaultValue="0.49375"/>
         </Parameters>
+      </Node>
+      <Node ID="chain" FactoryPath="container.chain" Bypassed="0" Name="chain">
+        <Nodes>
+          <Node ID="ms_decode" FactoryPath="routing.ms_decode" Bypassed="0" Name="ms_decode">
+            <Parameters/>
+          </Node>
+          <Node ID="multi" FactoryPath="container.multi" Bypassed="0" Name="multi">
+            <Nodes>
+              <Node ID="gain" FactoryPath="core.gain" Bypassed="0" Name="gain">
+                <Parameters>
+                  <Parameter MinValue="-100.0" MaxValue="0.0" StepSize="0.1000000014901161"
+                             SkewFactor="5.422270774841309" ID="Gain" Automated="1"/>
+                  <Parameter MinValue="0.0" MaxValue="1000.0" StepSize="0.1000000014901161"
+                             SkewFactor="0.3010300099849701" ID="Smoothing" Value="20.0"/>
+                  <Parameter MinValue="-100.0" MaxValue="0.0" StepSize="0.1000000014901161"
+                             SkewFactor="5.422270774841309" ID="ResetValue" Value="0.0"/>
+                </Parameters>
+              </Node>
+              <Node ID="gain1" FactoryPath="core.gain" Bypassed="0" Name="gain1">
+                <Parameters>
+                  <Parameter MinValue="-100.0" MaxValue="0.0" StepSize="0.1000000014901161"
+                             SkewFactor="5.422270774841309" ID="Gain" Automated="1"/>
+                  <Parameter MinValue="0.0" MaxValue="1000.0" StepSize="0.1000000014901161"
+                             SkewFactor="0.3010300099849701" ID="Smoothing" Value="20.0"/>
+                  <Parameter MinValue="-100.0" MaxValue="0.0" StepSize="0.1000000014901161"
+                             SkewFactor="5.422270774841309" ID="ResetValue" Value="0.0"/>
+                </Parameters>
+              </Node>
+            </Nodes>
+            <Parameters/>
+          </Node>
+          <Node ID="ms_encode" FactoryPath="routing.ms_encode" Bypassed="0" Name="ms_encode">
+            <Parameters/>
+          </Node>
+        </Nodes>
+        <Parameters/>
       </Node>
     </Nodes>
     <Parameters>
-      <Parameter ID="Gain" MinValue="-100.0" MaxValue="24.0" StepSize="0.1000000014901161"
-                 SkewFactor="1.835784819699001" Value="24.0" DefaultValue="1.0">
+      <Parameter ID="Width" MinValue="0.0" MaxValue="1.0" Value="1.0" DefaultValue="0.5007031249999999">
         <Connections>
-          <Connection NodeId="gain" ParameterId="Gain"/>
+          <Connection NodeId="xfader" ParameterId="Value"/>
         </Connections>
       </Parameter>
     </Parameters>

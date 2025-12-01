@@ -7,7 +7,7 @@ Synth.deferCallbacks(true);
 Synth.deferCallbacks(true);
 const NUM_CHANNELS = 2;
 
-const var Mix = Content.addKnob("Mix", 20, 20);
+const var Mix = Content.addKnob("Mix", 660, 180);
 Mix.setRange(0, 1, 0.001);
 Mix.setValue(0.5);
 Mix.set("text", "Mic Mix");
@@ -51,8 +51,8 @@ const var NoiseLevel = Content.getComponent("sldNoiseGain");
 // Einstellungen (falls du sie per Script setzen willst)
 NoiseLevel.set("text", "Noise");
 NoiseLevel.set("mode", "Decibel");
-NoiseLevel.setRange(-48, 0, 0.5);
-NoiseLevel.setValue(-18);
+NoiseLevel.setRange(-100, -24, 0.5);
+NoiseLevel.setValue(-24);
 
 // Callback
 inline function onNoiseLevelControl(component, value)
@@ -72,7 +72,7 @@ const var ChorusFXL  = Synth.getEffect("FXChorusL");
 const var ChorusFXR  = Synth.getEffect("FXChorusR");
 
 // 2) Regler anlegen
-const var knbStereo = Content.addKnob("knbStereo", 20, 20);
+const var knbStereo = Content.addKnob("knbStereo", 40, 200);
 knbStereo.set("text", "Stereo / Chorus");
 knbStereo.setRange(0, 100, 1);
 knbStereo.setValue(50);
@@ -94,8 +94,8 @@ inline function onknbStereoControl(component, value)
     local depth = minDepth * Math.pow(ratio, norm);
 
     // Attribute hier korrekt ersetzen!
-    ChorusFXL.setAttribute(ChorusFXL.Width, depth);
-    ChorusFXR.setAttribute(ChorusFXR.Width, depth);
+  ChorusFXL.setAttribute(ChorusFXL.Width, depth);
+  ChorusFXR.setAttribute(ChorusFXR.Width, depth);
 }
 
 knbStereo.setControlCallback(onknbStereoControl);
