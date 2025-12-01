@@ -4,58 +4,108 @@
   <Node FactoryPath="container.chain" ID="script_fx1" Bypassed="0" ShowParameters="1"
         Name="script_fx1">
     <Nodes>
-      <Node ID="xfader" FactoryPath="control.xfader" Bypassed="0" Name="xfader">
-        <Properties>
-          <Property ID="NumParameters" Value="2"/>
-          <Property ID="Mode" Value="Overlap"/>
-        </Properties>
-        <SwitchTargets>
-          <SwitchTarget>
-            <Connections>
-              <Connection NodeId="gain" ParameterId="Gain"/>
-            </Connections>
-          </SwitchTarget>
-          <SwitchTarget>
-            <Connections>
-              <Connection NodeId="gain1" ParameterId="Gain"/>
-            </Connections>
-          </SwitchTarget>
-        </SwitchTargets>
-        <Parameters>
-          <Parameter MinValue="0.0" MaxValue="1.0" ID="Value" Automated="1" DefaultValue="0.49375"/>
-        </Parameters>
-      </Node>
-      <Node ID="chain" FactoryPath="container.chain" Bypassed="0" Name="chain">
+      <Node ID="frame2_block" FactoryPath="container.frame2_block" Bypassed="0"
+            Name="frame2_block">
         <Nodes>
-          <Node ID="ms_decode" FactoryPath="routing.ms_decode" Bypassed="0" Name="ms_decode">
-            <Parameters/>
-          </Node>
-          <Node ID="multi" FactoryPath="container.multi" Bypassed="0" Name="multi">
+          <Node ID="modchain" FactoryPath="container.modchain" Bypassed="0" Name="modchain">
             <Nodes>
+              <Node ID="oscillator" FactoryPath="core.oscillator" Bypassed="0" Name="oscillator">
+                <ComplexData>
+                  <DisplayBuffers>
+                    <DisplayBuffer Index="-1"/>
+                  </DisplayBuffers>
+                </ComplexData>
+                <Parameters>
+                  <Parameter MinValue="0.0" MaxValue="4.0" StepSize="1.0" ID="Mode" Value="0.0"/>
+                  <Parameter MinValue="0.0" MaxValue="10.0" ID="Frequency" DefaultValue="1.96"
+                             Value="10.0"/>
+                  <Parameter MinValue="1.0" MaxValue="16.0" StepSize="1.0" ID="Freq Ratio"
+                             Value="2.0" DefaultValue="1.0"/>
+                  <Parameter MinValue="0.0" MaxValue="1.0" StepSize="1.0" ID="Gate" Value="1.0"/>
+                  <Parameter MinValue="0.0" MaxValue="1.0" ID="Phase" Value="0.324046875"
+                             DefaultValue="0.0"/>
+                  <Parameter MinValue="0.0" MaxValue="1.0" ID="Gain" Value="1.0"/>
+                </Parameters>
+              </Node>
+              <Node ID="sig2mod" FactoryPath="math.sig2mod" Bypassed="0" Name="sig2mod">
+                <Parameters>
+                  <Parameter MinValue="0.0" MaxValue="1.0" ID="Value" Value="0.012"/>
+                </Parameters>
+              </Node>
               <Node ID="gain" FactoryPath="core.gain" Bypassed="0" Name="gain">
                 <Parameters>
-                  <Parameter MinValue="-100.0" MaxValue="0.0" StepSize="0.1000000014901161"
-                             SkewFactor="5.422270774841309" ID="Gain" Automated="1"/>
+                  <Parameter MinValue="-100.0" MaxValue="-58.37709137517119" StepSize="0.1000000014901161"
+                             SkewFactor="5.662334949305318" ID="Gain" Automated="1" DefaultValue="-100.0"/>
                   <Parameter MinValue="0.0" MaxValue="1000.0" StepSize="0.1000000014901161"
-                             SkewFactor="0.3010300099849701" ID="Smoothing" Value="20.0"/>
+                             SkewFactor="0.3010300099849701" ID="Smoothing" Value="59.70000088959932"/>
                   <Parameter MinValue="-100.0" MaxValue="0.0" StepSize="0.1000000014901161"
                              SkewFactor="5.422270774841309" ID="ResetValue" Value="0.0"/>
                 </Parameters>
               </Node>
-              <Node ID="gain1" FactoryPath="core.gain" Bypassed="0" Name="gain1">
+              <Node ID="peak" FactoryPath="core.peak" Bypassed="0" Name="peak">
+                <ModulationTargets>
+                  <ModulationTarget NodeId="xfader" ParameterId="Value"/>
+                </ModulationTargets>
+                <ComplexData>
+                  <DisplayBuffers>
+                    <DisplayBuffer Index="-1"/>
+                  </DisplayBuffers>
+                </ComplexData>
+                <Parameters/>
+              </Node>
+              <Node ID="xfader" FactoryPath="control.xfader" Bypassed="0" Name="xfader">
+                <Properties>
+                  <Property ID="NumParameters" Value="2"/>
+                  <Property ID="Mode" Value="Linear"/>
+                </Properties>
+                <SwitchTargets>
+                  <SwitchTarget>
+                    <Connections>
+                      <Connection NodeId="jdelay" ParameterId="DelayTime"/>
+                    </Connections>
+                  </SwitchTarget>
+                  <SwitchTarget>
+                    <Connections>
+                      <Connection NodeId="jdelay1" ParameterId="DelayTime"/>
+                    </Connections>
+                  </SwitchTarget>
+                </SwitchTargets>
                 <Parameters>
-                  <Parameter MinValue="-100.0" MaxValue="0.0" StepSize="0.1000000014901161"
-                             SkewFactor="5.422270774841309" ID="Gain" Automated="1"/>
-                  <Parameter MinValue="0.0" MaxValue="1000.0" StepSize="0.1000000014901161"
-                             SkewFactor="0.3010300099849701" ID="Smoothing" Value="20.0"/>
-                  <Parameter MinValue="-100.0" MaxValue="0.0" StepSize="0.1000000014901161"
-                             SkewFactor="5.422270774841309" ID="ResetValue" Value="0.0"/>
+                  <Parameter MinValue="0.0" MaxValue="1.0" ID="Value" Automated="1"/>
                 </Parameters>
               </Node>
             </Nodes>
             <Parameters/>
           </Node>
-          <Node ID="ms_encode" FactoryPath="routing.ms_encode" Bypassed="0" Name="ms_encode">
+          <Node ID="multi" FactoryPath="container.multi" Bypassed="0" Name="multi">
+            <Nodes>
+              <Node ID="jdelay" FactoryPath="jdsp.jdelay" Bypassed="0" Name="jdelay">
+                <Parameters>
+                  <Parameter MinValue="0.0" MaxValue="1000.0" SkewFactor="0.3010300099849701"
+                             ID="Limit" Value="1000.0"/>
+                  <Parameter MinValue="0.0" MaxValue="50.0" ID="DelayTime" Automated="1" DefaultValue="1.040813745930791"/>
+                </Parameters>
+              </Node>
+              <Node ID="jdelay1" FactoryPath="jdsp.jdelay" Bypassed="0" Name="jdelay1">
+                <Parameters>
+                  <Parameter MinValue="0.0" MaxValue="1000.0" SkewFactor="0.3010300099849701"
+                             ID="Limit" Value="1000.0"/>
+                  <Parameter MinValue="0.0" MaxValue="50.0" ID="DelayTime" Automated="1" DefaultValue="1.040813745930791"/>
+                </Parameters>
+              </Node>
+            </Nodes>
+            <Parameters/>
+          </Node>
+          <Node ID="multi1" FactoryPath="container.multi" Bypassed="0" Name="multi1">
+            <Nodes>
+              <Node ID="haas" FactoryPath="fx.haas" Bypassed="1" Name="haas">
+                <Parameters>
+                  <Parameter MinValue="-0.8478949910755773" MaxValue="-0.6595745086669922"
+                             StepSize="0.1000000014901161" ID="Position" DefaultValue="" SkewFactor="0.8655365705490112"
+                             Value="-0.7478949895854612"/>
+                </Parameters>
+              </Node>
+            </Nodes>
             <Parameters/>
           </Node>
         </Nodes>
@@ -63,10 +113,14 @@
       </Node>
     </Nodes>
     <Parameters>
-      <Parameter ID="Width" MinValue="0.0" MaxValue="1.0" Value="1.0" DefaultValue="0.5007031249999999">
+      <Parameter ID="Amount" MinValue="0.0" MaxValue="0.147149458245252" Value="0.03999999910593033"
+                 DefaultValue="0.948">
         <Connections>
-          <Connection NodeId="xfader" ParameterId="Value"/>
+          <Connection NodeId="gain" ParameterId="Gain"/>
         </Connections>
+      </Parameter>
+      <Parameter ID="Speed" MinValue="0.0" MaxValue="1.0" Value="1.0" DefaultValue="0.0">
+        <Connections/>
       </Parameter>
     </Parameters>
   </Node>

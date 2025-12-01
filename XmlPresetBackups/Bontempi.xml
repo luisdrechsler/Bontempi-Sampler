@@ -10,10 +10,10 @@
           <ChildProcessors/>
           <Content>
             <Control type="ScriptSlider" id="Mix" value="0.5"/>
-            <Control type="ScriptSlider" id="knbStereo" value="0.0"/>
-            <Control type="ScriptSlider" id="sldNoiseGain" value="-38.5"/>
+            <Control type="ScriptSlider" id="sldNoiseGain" value="-63.0"/>
             <Control type="ScriptSlider" id="sldGain" value="0.0"/>
             <Control type="ScriptSlider" id="sldPan" value="0.0"/>
+            <Control type="ScriptSlider" id="VintageSat" value="0.0"/>
           </Content>
           <UIData Source="BontempiUIData"/>
         </Processor>
@@ -99,7 +99,7 @@
                 <ContentProperties DeviceType="Desktop"/>
               </UIData>
             </Processor>
-            <Processor Type="ScriptFX" ID="ScriptFXGain" Bypassed="0">
+            <Processor Type="ScriptFX" ID="ScriptFXGain" Bypassed="1">
               <ChildProcessors/>
               <RoutingMatrix NumSourceChannels="2" Channel0="0" Send0="-1" Channel1="1" Send1="-1"/>
               <Content/>
@@ -110,13 +110,40 @@
                 <ContentProperties DeviceType="Desktop"/>
               </UIData>
             </Processor>
-            <Processor Type="ScriptFX" ID="Script FX1" Bypassed="0">
+            <Processor Type="ScriptFX" ID="Script FX1" Bypassed="1">
               <ChildProcessors/>
               <RoutingMatrix NumSourceChannels="2" Channel0="0" Send0="-1" Channel1="1" Send1="-1"/>
               <Content/>
               <UIData>
                 <ContentProperties DeviceType="Desktop"/>
               </UIData>
+            </Processor>
+            <Processor Type="ScriptFX" ID="ScriptFxVintage" Bypassed="0">
+              <ChildProcessors/>
+              <RoutingMatrix NumSourceChannels="2" Channel0="0" Send0="-1" Channel1="1" Send1="-1"/>
+              <Content/>
+              <Networks>
+                <Network ID="script_fx1" Version="0.0.0"/>
+              </Networks>
+              <UIData>
+                <ContentProperties DeviceType="Desktop"/>
+              </UIData>
+            </Processor>
+            <Processor Type="Saturator" ID="fxSaturator" Bypassed="0" Saturation="0.0"
+                       WetAmount="1.0" PreGain="0.0" PostGain="0.0">
+              <ChildProcessors>
+                <Processor Type="ModulatorChain" ID="Saturation Modulation" Bypassed="0"
+                           Intensity="1.0">
+                  <ChildProcessors/>
+                </Processor>
+              </ChildProcessors>
+              <RoutingMatrix NumSourceChannels="2" Channel0="0" Send0="-1" Channel1="1" Send1="-1"/>
+            </Processor>
+            <Processor Type="SimpleReverb" ID="container0FxSimpleReverb" Bypassed="0"
+                       RoomSize="0.3600000143051147" Damping="0.6000000238418579" WetLevel="0.09000000357627869"
+                       DryLevel="0.9099999666213989" Width="0.800000011920929" FreezeMode="0.1000000014901161">
+              <ChildProcessors/>
+              <RoutingMatrix NumSourceChannels="2" Channel0="0" Send0="-1" Channel1="1" Send1="-1"/>
             </Processor>
           </ChildProcessors>
         </Processor>
@@ -221,76 +248,76 @@
           <samplemap CrossfadeGamma="1.0" ID="Clean" RRGroupAmount="1.0" MicPositions=";">
             <sample Root="73" LoKey="73" HiKey="73" LoVel="0" HiVel="127" RRGroup="1"
                     FileName="{PROJECT_FOLDER}Bontempi_Clean_Notes/Bontempi_Clean_Notes_rr1_73_C#4.wav"
-                    Duplicate="0" LoopStart="21862"/>
+                    Duplicate="1" LoopStart="21862"/>
             <sample Root="68" LoKey="63" HiKey="63" LoVel="0" HiVel="127" RRGroup="1"
                     FileName="{PROJECT_FOLDER}Bontempi_Clean_Notes/Bontempi_Clean_Notes_rr1_68.wav"
-                    Duplicate="0"/>
+                    Duplicate="1"/>
             <sample Root="71" LoKey="71" HiKey="71" LoVel="0" HiVel="127" RRGroup="1"
                     FileName="{PROJECT_FOLDER}Bontempi_Clean_Notes/Bontempi_Clean_Notes_rr1_71_B3.wav"
-                    Duplicate="0" LoopStart="236582" SampleStart="986"/>
+                    Duplicate="1" LoopStart="236582" SampleStart="986"/>
             <sample Root="78" LoKey="78" HiKey="78" LoVel="0" HiVel="127" RRGroup="1"
                     FileName="{PROJECT_FOLDER}Bontempi_Clean_Notes/Bontempi_Clean_Notes_rr1_78_F#4.wav"
-                    Duplicate="0"/>
+                    Duplicate="1"/>
             <sample Root="56" LoKey="56" HiKey="56" LoVel="0" HiVel="127" RRGroup="1"
                     FileName="{PROJECT_FOLDER}Bontempi_Clean_Notes/  Bontempi_Clean_Notes_rr1_64_E3.wav"
-                    Duplicate="0"/>
+                    Duplicate="1"/>
             <sample Root="84" LoKey="84" HiKey="84" LoVel="0" HiVel="127" RRGroup="1"
                     FileName="{PROJECT_FOLDER}Bontempi_Clean_Notes/Bontempi_Clean_Notes_rr1_84_C5.wav"
-                    Duplicate="0"/>
+                    Duplicate="1"/>
             <sample Root="70" LoKey="70" HiKey="70" LoVel="0" HiVel="127" RRGroup="1"
                     FileName="{PROJECT_FOLDER}Bontempi_Clean_Notes/Bontempi_Clean_Notes_rr1_70_A#3.wav"
-                    Duplicate="0"/>
+                    Duplicate="1"/>
             <sample Root="81" LoKey="80" HiKey="81" LoVel="0" HiVel="127" RRGroup="1"
                     FileName="{PROJECT_FOLDER}Bontempi_Clean_Notes/Bontempi_Clean_Notes_rr1_81_A4.wav"
-                    Duplicate="0"/>
+                    Duplicate="1"/>
             <sample Root="60" LoKey="60" HiKey="60" LoVel="0" HiVel="127" RRGroup="1"
                     FileName="{PROJECT_FOLDER}Bontempi_Clean_Notes/Bontempi_Clean_Notes_rr1_60_C3.wav"
-                    Duplicate="0"/>
+                    Duplicate="1"/>
             <sample Root="74" LoKey="74" HiKey="74" LoVel="0" HiVel="127" RRGroup="1"
                     FileName="{PROJECT_FOLDER}Bontempi_Clean_Notes/Bontempi_Clean_Notes_rr1_74_D4.wav"
-                    Duplicate="0" LoopStart="19011" LoopEnabled="0"/>
+                    Duplicate="1" LoopStart="19011" LoopEnabled="0"/>
             <sample Root="76" LoKey="76" HiKey="76" LoVel="0" HiVel="127" RRGroup="1"
                     FileName="{PROJECT_FOLDER}Bontempi_Clean_Notes/Bontempi_Clean_Notes_rr1_76_E4.wav"
-                    Duplicate="0"/>
+                    Duplicate="1"/>
             <sample Root="72" LoKey="72" HiKey="72" LoVel="0" HiVel="127" RRGroup="1"
                     FileName="{PROJECT_FOLDER}Bontempi_Clean_Notes/Bontempi_Clean_Notes_rr1_72_C4.wav"
-                    Duplicate="0"/>
+                    Duplicate="1"/>
             <sample Root="69" LoKey="69" HiKey="69" LoVel="0" HiVel="127" RRGroup="1"
                     FileName="{PROJECT_FOLDER}Bontempi_Clean_Notes/Bontempi_Clean_Notes_rr1_69_A3.wav"
-                    Duplicate="0"/>
+                    Duplicate="1"/>
             <sample Root="83" LoKey="83" HiKey="83" LoVel="0" HiVel="127" RRGroup="1"
                     FileName="{PROJECT_FOLDER}Bontempi_Clean_Notes/Bontempi_Clean_Notes_rr1_83_B4.wav"
-                    Duplicate="0"/>
+                    Duplicate="1"/>
             <sample Root="61" LoKey="61" HiKey="62" LoVel="0" HiVel="127" RRGroup="1"
                     FileName="{PROJECT_FOLDER}Bontempi_Clean_Notes/Bontempi_Clean_Notes_rr1_61.wav"
-                    Duplicate="0"/>
+                    Duplicate="1"/>
             <sample Root="55" LoKey="55" HiKey="55" LoVel="0" HiVel="127" RRGroup="1"
                     FileName="{PROJECT_FOLDER}Bontempi_Clean_Notes/Bontempi_Clean_Notes_rr1_63.wav"
-                    Duplicate="0"/>
+                    Duplicate="1"/>
             <sample Root="75" LoKey="75" HiKey="75" LoVel="0" HiVel="127" RRGroup="1"
                     FileName="{PROJECT_FOLDER}Bontempi_Clean_Notes/Bontempi_Clean_Notes_rr1_75_D#4.wav"
-                    Duplicate="0"/>
+                    Duplicate="1"/>
             <sample Root="66" LoKey="66" HiKey="66" LoVel="0" HiVel="127" RRGroup="1"
                     FileName="{PROJECT_FOLDER}Bontempi_Clean_Notes/Bontempi_Clean_Notes_rr1_66.wav"
-                    Duplicate="0"/>
+                    Duplicate="1"/>
             <sample Root="67" LoKey="67" HiKey="68" LoVel="0" HiVel="127" RRGroup="1"
                     FileName="{PROJECT_FOLDER}Bontempi_Clean_Notes/Bontempi_Clean_Notes_rr1_67.wav"
-                    Duplicate="0"/>
+                    Duplicate="1"/>
             <sample Root="82" LoKey="82" HiKey="82" LoVel="0" HiVel="127" RRGroup="1"
                     FileName="{PROJECT_FOLDER}Bontempi_Clean_Notes/Bontempi_Clean_Notes_rr1_82_A#4.wav"
-                    Duplicate="0"/>
+                    Duplicate="1"/>
             <sample Root="77" LoKey="77" HiKey="77" LoVel="0" HiVel="127" RRGroup="1"
                     FileName="{PROJECT_FOLDER}Bontempi_Clean_Notes/Bontempi_Clean_Notes_rr1_77_F4.wav"
-                    Duplicate="0"/>
+                    Duplicate="1"/>
             <sample Root="65" LoKey="65" HiKey="65" LoVel="0" HiVel="127" RRGroup="1"
                     FileName="{PROJECT_FOLDER}Bontempi_Clean_Notes/Bontempi_Clean_Notes_rr1_65.wav"
-                    Duplicate="0"/>
+                    Duplicate="1"/>
             <sample Root="64" LoKey="64" HiKey="64" LoVel="0" HiVel="127" RRGroup="1"
                     FileName="{PROJECT_FOLDER}Bontempi_Clean_Notes/Bontempi_Clean_Notes_rr1_64.wav"
-                    Duplicate="0" LoopStart="51714" LoopEnd="56226"/>
+                    Duplicate="1" LoopStart="51714" LoopEnd="56226"/>
             <sample Root="79" LoKey="79" HiKey="79" LoVel="0" HiVel="127" RRGroup="1"
                     FileName="{PROJECT_FOLDER}Bontempi_Clean_Notes/Bontempi_Clean_Notes_rr1_79_G4.wav"
-                    Duplicate="0"/>
+                    Duplicate="1"/>
           </samplemap>
         </Processor>
         <Processor Type="StreamingSampler" ID="sampler1notes2" Bypassed="0" Gain="1.0"
@@ -360,7 +387,7 @@
             </Processor>
             <Processor Type="EffectChain" ID="FX" Bypassed="0">
               <ChildProcessors>
-                <Processor Type="SimpleReverb" ID="sampler1FxSimpleReverb" Bypassed="0"
+                <Processor Type="SimpleReverb" ID="sampler1FxSimpleReverb" Bypassed="1"
                            RoomSize="0.3600000143051147" Damping="0.6000000238418579" WetLevel="0.09000000357627869"
                            DryLevel="0.9099999666213989" Width="0.800000011920929" FreezeMode="0.1000000014901161">
                   <ChildProcessors/>
@@ -465,12 +492,6 @@
             </Processor>
             <Processor Type="EffectChain" ID="FX" Bypassed="0">
               <ChildProcessors>
-                <Processor Type="SimpleReverb" ID="sample3FxSimpleReverb" Bypassed="0" RoomSize="0.3600000143051147"
-                           Damping="0.6000000238418579" WetLevel="0.09000000357627869" DryLevel="0.9099999666213989"
-                           Width="0.800000011920929" FreezeMode="0.1000000014901161">
-                  <ChildProcessors/>
-                  <RoutingMatrix NumSourceChannels="2" Channel0="0" Send0="-1" Channel1="1" Send1="-1"/>
-                </Processor>
                 <Processor Type="SimpleGain" ID="sampler3FxSimpleGain" Bypassed="0" Gain="0.0"
                            Delay="0.0" Width="100.0" Balance="0.0" InvertPolarity="0.0">
                   <ChildProcessors>
@@ -610,75 +631,75 @@
           <samplemap CrossfadeGamma="1.0" ID="Goldmike" RRGroupAmount="1.0" MicPositions=";">
             <sample Root="60" LoKey="60" HiKey="60" LoVel="0" HiVel="127" RRGroup="1"
                     FileName="{PROJECT_FOLDER}Bontempi_Goldmike_Notes/  Bontempi_Goldmike_Notes_rr1_60_C3.wav"
-                    Duplicate="0" LoopStart="97474" LoopEnd="242019" Normalized="0"
+                    Duplicate="1" LoopStart="97474" LoopEnd="242019" Normalized="0"
                     NormalizedPeak="1.412537217140198" LoopEnabled="1" LoopXFade="20"/>
             <sample Root="61" LoKey="61" HiKey="62" LoVel="0" HiVel="127" RRGroup="1"
                     FileName="{PROJECT_FOLDER}Bontempi_Goldmike_Notes/ Bontempi_Goldmike_Notes_rr1_61_C#3.wav"
-                    Duplicate="0" LoopEnabled="1" LoopStart="115864" LoopEnd="249271"
+                    Duplicate="1" LoopEnabled="1" LoopStart="115864" LoopEnd="249271"
                     LoopXFade="10"/>
             <sample Root="63" LoKey="63" HiKey="63" LoVel="0" HiVel="127" RRGroup="1"
                     FileName="{PROJECT_FOLDER}Bontempi_Goldmike_Notes/  Bontempi_Goldmike_Notes_rr1_63_C#3.wav"
-                    Duplicate="0"/>
+                    Duplicate="1"/>
             <sample Root="64" LoKey="64" HiKey="64" LoVel="0" HiVel="127" RRGroup="1"
                     FileName="{PROJECT_FOLDER}Bontempi_Goldmike_Notes/  Bontempi_Goldmike_Notes_rr1_64_E3.wav"
-                    Duplicate="0"/>
+                    Duplicate="1"/>
             <sample Root="65" LoKey="65" HiKey="65" LoVel="0" HiVel="127" RRGroup="1"
                     FileName="{PROJECT_FOLDER}Bontempi_Goldmike_Notes/  Bontempi_Goldmike_Notes_rr1_65_F3.wav"
-                    Duplicate="0"/>
+                    Duplicate="1"/>
             <sample Root="66" LoKey="66" HiKey="66" LoVel="0" HiVel="127" RRGroup="1"
                     FileName="{PROJECT_FOLDER}Bontempi_Goldmike_Notes/  Bontempi_Goldmike_Notes_rr1_66_F'3.wav"
-                    Duplicate="0"/>
+                    Duplicate="1"/>
             <sample Root="67" LoKey="67" HiKey="67" LoVel="0" HiVel="127" RRGroup="1"
                     FileName="{PROJECT_FOLDER}Bontempi_Goldmike_Notes/  Bontempi_Goldmike_Notes_rr1_67_G3.wav"
-                    Duplicate="0"/>
+                    Duplicate="1"/>
             <sample Root="68" LoKey="68" HiKey="68" LoVel="0" HiVel="127" RRGroup="1"
                     FileName="{PROJECT_FOLDER}Bontempi_Goldmike_Notes/  Bontempi_Goldmike_Notes_rr1_68_G#3.wav"
-                    Duplicate="0"/>
+                    Duplicate="1"/>
             <sample Root="69" LoKey="69" HiKey="69" LoVel="0" HiVel="127" RRGroup="1"
                     FileName="{PROJECT_FOLDER}Bontempi_Goldmike_Notes/  Bontempi_Goldmike_Notes_rr1_69_A3.wav"
-                    Duplicate="0"/>
+                    Duplicate="1"/>
             <sample Root="70" LoKey="70" HiKey="70" LoVel="0" HiVel="127" RRGroup="1"
                     FileName="{PROJECT_FOLDER}Bontempi_Goldmike_Notes/  Bontempi_Goldmike_Notes_rr1_70_A#3.wav"
-                    Duplicate="0"/>
+                    Duplicate="1"/>
             <sample Root="71" LoKey="71" HiKey="71" LoVel="0" HiVel="127" RRGroup="1"
                     FileName="{PROJECT_FOLDER}Bontempi_Goldmike_Notes/  Bontempi_Goldmike_Notes_rr1_71_B3.wav"
-                    Duplicate="0"/>
+                    Duplicate="1"/>
             <sample Root="72" LoKey="72" HiKey="72" LoVel="0" HiVel="127" RRGroup="1"
                     FileName="{PROJECT_FOLDER}Bontempi_Goldmike_Notes/ Bontempi_Goldmike_Notes_rr1_72_C4.wav"
-                    Duplicate="0"/>
+                    Duplicate="1"/>
             <sample Root="73" LoKey="73" HiKey="73" LoVel="0" HiVel="127" RRGroup="1"
                     FileName="{PROJECT_FOLDER}Bontempi_Goldmike_Notes/  Bontempi_Goldmike_Notes_rr1_73_C#4.wav"
-                    Duplicate="0"/>
+                    Duplicate="1"/>
             <sample Root="75" LoKey="75" HiKey="75" LoVel="0" HiVel="127" RRGroup="1"
                     FileName="{PROJECT_FOLDER}Bontempi_Goldmike_Notes/  Bontempi_Goldmike_Notes_rr1_74_D#4.wav"
-                    Duplicate="0"/>
+                    Duplicate="1"/>
             <sample Root="74" LoKey="74" HiKey="74" LoVel="0" HiVel="127" RRGroup="1"
                     FileName="{PROJECT_FOLDER}Bontempi_Goldmike_Notes/  Bontempi_Goldmike_Notes_rr1_74_D4.wav"
-                    Duplicate="0"/>
+                    Duplicate="1"/>
             <sample Root="76" LoKey="76" HiKey="76" LoVel="0" HiVel="127" RRGroup="1"
                     FileName="{PROJECT_FOLDER}Bontempi_Goldmike_Notes/  Bontempi_Goldmike_Notes_rr1_76_E4.wav"
-                    Duplicate="0"/>
+                    Duplicate="1"/>
             <sample Root="77" LoKey="77" HiKey="77" LoVel="0" HiVel="127" RRGroup="1"
                     FileName="{PROJECT_FOLDER}Bontempi_Goldmike_Notes/ Bontempi_Goldmike_Notes_rr1_77_F4.wav"
-                    Duplicate="0"/>
+                    Duplicate="1"/>
             <sample Root="80" LoKey="80" HiKey="80" LoVel="0" HiVel="127" RRGroup="1"
                     FileName="{PROJECT_FOLDER}Bontempi_Goldmike_Notes/Bontempi_Goldmike_Notes_rr1_80_G#4.wav"
-                    Duplicate="0"/>
+                    Duplicate="1"/>
             <sample Root="81" LoKey="81" HiKey="81" LoVel="0" HiVel="127" RRGroup="1"
                     FileName="{PROJECT_FOLDER}Bontempi_Goldmike_Notes/  Bontempi_Goldmike_Notes_rr1_81_A4.wav"
-                    Duplicate="0"/>
+                    Duplicate="1"/>
             <sample Root="82" LoKey="82" HiKey="82" LoVel="0" HiVel="127" RRGroup="1"
                     FileName="{PROJECT_FOLDER}Bontempi_Goldmike_Notes/  Bontempi_Goldmike_Notes_rr1_82_A#4.wav"
-                    Duplicate="0"/>
+                    Duplicate="1"/>
             <sample Root="83" LoKey="83" HiKey="83" LoVel="0" HiVel="127" RRGroup="1"
                     FileName="{PROJECT_FOLDER}Bontempi_Goldmike_Notes/  Bontempi_Goldmike_Notes_rr1_83_B4.wav"
-                    Duplicate="0"/>
+                    Duplicate="1"/>
             <sample Root="84" LoKey="84" HiKey="84" LoVel="0" HiVel="127" RRGroup="1"
                     FileName="{PROJECT_FOLDER}Bontempi_Goldmike_Notes/  Bontempi_Goldmike_Notes_rr1_84_C5.wav"
-                    Duplicate="0"/>
+                    Duplicate="1"/>
             <sample Root="78" LoKey="78" HiKey="79" LoVel="0" HiVel="127" RRGroup="1"
                     FileName="{PROJECT_FOLDER}Bontempi_Goldmike_Notes/  Bontempi_Goldmike_Notes_rr1_87_F#4.wav"
-                    Duplicate="0"/>
+                    Duplicate="1"/>
           </samplemap>
         </Processor>
         <Processor Type="WaveSynth" ID="Waveform Generator1" Bypassed="1" Gain="0.25"
@@ -787,7 +808,7 @@
             </Processor>
             <Processor Type="EffectChain" ID="FX" Bypassed="0">
               <ChildProcessors>
-                <Processor Type="SimpleGain" ID="sampler4FxSimpleGain" Bypassed="0" Gain="-38.5"
+                <Processor Type="SimpleGain" ID="sampler4FxSimpleGain" Bypassed="0" Gain="-63.0"
                            Delay="0.0" Width="100.0" Balance="0.0" InvertPolarity="0.0">
                   <ChildProcessors>
                     <Processor Type="ModulatorChain" ID="Gain Modulation" Bypassed="0" Intensity="1.0">
@@ -838,6 +859,9 @@
       <controlled_parameter id="sampler1FxSimpleGain" parameter="4" parameter_name="Default"
                             min="0.0" max="127.0" low="0.0" high="127.0" skew="1.0" step="0.01"
                             inverted="0" readonly="1" converter="37.nT6K8CBGgC..VEFa0U1Pu4lckIGckIG.ADPXiQWZ1UF.ADf..."/>
+      <controlled_parameter id="fxSaturator" parameter="0" parameter_name="Saturation" min="0.0"
+                            max="1.0" low="0.0" high="1.0" skew="1.0" step="0.01" inverted="0"
+                            readonly="1" converter="79.nT6K8CRR0H..RRHDW.XvM77RQKadk.QeayxTXCPtZNBJILkB28jr2i3af7.pJU3UwQ.ucoMZYoa3XvCflRrk.Du2zFkF7327a6h3LUdD.."/>
     </macro>
     <macro name="Macro 2" value="0.0" midi_cc="-1"/>
     <macro name="Macro 3" value="0.0" midi_cc="-1"/>
@@ -851,7 +875,7 @@
     <Controller Controller="2" Processor="Interface" MacroIndex="-1" Start="0.0"
                 End="1.0" FullStart="0.0" FullEnd="1.0" Skew="1.0" Interval="0.01"
                 Converter="37.nT6K8CBGgC..VEFa0U1Pu4lckIGckIG.ADPXiQWZ1UF.ADf..."
-                Attribute="sldGain" Inverted="0"/>
+                Attribute="fltKeyboard" Inverted="0"/>
   </MidiAutomation>
   <MPEData Enabled="0"/>
 </Processor>

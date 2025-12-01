@@ -66,41 +66,37 @@ NoiseLevel.setControlCallback(onNoiseLevelControl);
 // Initial anwenden
 NoiseGain.setAttribute(0, NoiseLevel.getValue());
 
-// 1) Effekte holen
-const var WidthFX    = Synth.getEffect("ScriptFXWidth");
-const var ChorusFXL  = Synth.getEffect("FXChorusL");
-const var ChorusFXR  = Synth.getEffect("FXChorusR");
 
-// 2) Regler anlegen
-const var knbStereo = Content.addKnob("knbStereo", 40, 200);
-knbStereo.set("text", "Stereo / Chorus");
-knbStereo.setRange(0, 100, 1);
-knbStereo.setValue(50);
 
-// 3) Callback
-inline function onknbStereoControl(component, value)
+
+
+// Effekte holen
+const var VintageFX = Synth.getEffect("ScriptFxVintage");
+const var SatFX     = Synth.getEffect("fxSaturator");
+
+// Knob anlegen
+const var VintageSat = Content.addKnob("VintageSat", 40, 200);
+VintageSat.set("text", "Vintage / Sat");
+VintageSat.setRange(0.0, 1.0, 0.01); // sehr feine Schritte
+VintageSat.set("showValuePopup", true);
+VintageSat.set("mode", "NormalizedPercentage");
+
+// Callback
+inline function onVintageSatControl(component, value)
 {
-    local norm = value / 100.0;
+    // Vintage normalisiert 0–1
+    VintageFX.setAttribute(0, value);
 
-    // a) Width FX
-    local widthVal = -1 + norm * 3;
-    WidthFX.setAttribute(WidthFX.Width, widthVal);
-
-    // b) Chorus Depth log
-    local minDepth = 0.00;
-    local maxDepth = 0.40;
-    local ratio = maxDepth / minDepth;
-
-    local depth = minDepth * Math.pow(ratio, norm);
-
-    // Attribute hier korrekt ersetzen!
-  ChorusFXL.setAttribute(ChorusFXL.Width, depth);
-  ChorusFXR.setAttribute(ChorusFXR.Width, depth);
+    // Saturation auf 0–40 % begrenzt → also 0.0 bis 0.4 normalized
+    local satNorm = value * 0.4;
+    SatFX.setAttribute(0, satNorm);
 }
 
-knbStereo.setControlCallback(onknbStereoControl);
-onknbStereoControl(knbStereo, knbStereo.getValue());
-function onNoteOn()
+VintageSat.setControlCallback(onVintageSatControl);
+
+// Startwert + initial anwenden
+VintageSat.setValue(0.5);
+onVintageSatControl(VintageSat, VintageSat.getValue());function onNoteOn()
 {
 	
 }

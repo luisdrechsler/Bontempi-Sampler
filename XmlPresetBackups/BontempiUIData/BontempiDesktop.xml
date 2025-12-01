@@ -5,14 +5,12 @@
              height="300.0" itemColour2="818112359" borderRadius="0.0" textColour="587202560">
     <Component type="ScriptSlider" id="Mix" x="660" y="180" stepSize="0.001"
                text="Mic Mix" showValuePopup="1" parentComponent="pnlMain"/>
-    <Component type="ScriptSlider" id="knbStereo" x="40.0" y="200.0" stepSize="1.0"
-               max="100.0" text="Stereo / Chorus" parentComponent="pnlMain"/>
     <Component type="ScriptSlider" id="sldNoiseGain" x="40.0" y="250.0" middlePosition="-62.0"
                stepSize="0.5" min="-100.0" max="-24.0" suffix=" dB" text="Noise"
                mode="Decibel" parentComponent="pnlMain"/>
     <Component type="ScriptSlider" id="sldGain" x="660.0" y="70.0" width="130.0"
                height="50.0" parentComponent="pnlMain" isMetaParameter="1" min="-100.0"
-               max="24.0" text="Gain" processorId="ScriptFXGain" parameterId="Gain"/>
+               max="24.0" text="Gain" macroControl="Macro 1"/>
     <Component type="ScriptFloatingTile" id="fltKeyboard" x="351.0" y="240.0"
                width="449.0" height="60.0" parentComponent="pnlMain" updateAfterInit="0"
                ContentType="Keyboard" bgColour="4284769380" itemColour="452984831"
@@ -55,4 +53,6 @@
                height="50.0" parentComponent="pnlMain" isPluginParameter="1"
                processorId="Script FXPan" parameterId="Pan" min="-1.0" middlePosition="0.0"/>
   </Component>
+  <Component type="ScriptSlider" id="VintageSat" x="40.0" y="200.0" text="Vintage / Sat"
+             showValuePopup="1" mode="NormalizedPercentage" suffix="%" middlePosition="0.5"/>
 </ContentProperties>
