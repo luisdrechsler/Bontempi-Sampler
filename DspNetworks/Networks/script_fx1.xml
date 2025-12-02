@@ -96,6 +96,19 @@
             </Nodes>
             <Parameters/>
           </Node>
+          <Node ID="jchorus" FactoryPath="jdsp.jchorus" Bypassed="0" Name="jchorus">
+            <Parameters>
+              <Parameter MinValue="0.0" MaxValue="100.0" ID="CentreDelay" Value="17.06875"
+                         DefaultValue="7.0"/>
+              <Parameter MinValue="0.0" MaxValue="0.01697823346340475" ID="Depth" DefaultValue="0.25"
+                         Automated="1"/>
+              <Parameter MinValue="-1.0" MaxValue="0.4468085169792175" ID="Feedback" Value="0.0"/>
+              <Parameter MinValue="0.0" MaxValue="100.0" SkewFactor="0.3010300099849701"
+                         ID="Rate" Value="100.0" DefaultValue="1.0"/>
+              <Parameter MinValue="0.0" MaxValue="1.0" ID="Mix" Value="0.03073437500000007"
+                         DefaultValue="0.5"/>
+            </Parameters>
+          </Node>
           <Node ID="multi1" FactoryPath="container.multi" Bypassed="0" Name="multi1">
             <Nodes>
               <Node ID="haas" FactoryPath="fx.haas" Bypassed="1" Name="haas">
@@ -113,13 +126,15 @@
       </Node>
     </Nodes>
     <Parameters>
-      <Parameter ID="Amount" MinValue="0.0" MaxValue="0.147149458245252" Value="0.03999999910593033"
+      <Parameter ID="Amount" MinValue="0.0" MaxValue="0.147149458245252" Value="0.147149458245252"
                  DefaultValue="0.948">
         <Connections>
           <Connection NodeId="gain" ParameterId="Gain"/>
+          <Connection NodeId="jchorus" ParameterId="Depth"/>
         </Connections>
       </Parameter>
-      <Parameter ID="Speed" MinValue="0.0" MaxValue="1.0" Value="1.0" DefaultValue="0.0">
+      <Parameter ID="Speed" MinValue="0.0" MaxValue="1.0" Value="0.156140625"
+                 DefaultValue="0.0">
         <Connections/>
       </Parameter>
     </Parameters>

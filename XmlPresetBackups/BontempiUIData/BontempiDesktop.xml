@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <ContentProperties DeviceType="Desktop">
-  <Component type="ScriptPanel" id="pnlMain" x="0.0" y="0.0" width="800.0"
+  <Component type="ScriptPanel" id="pnlMain" x="-1.0" y="0.0" width="800.0"
              height="300.0" itemColour2="818112359" borderRadius="0.0" textColour="587202560">
     <Component type="ScriptSlider" id="Mix" x="660" y="180" stepSize="0.001"
-               text="Mic Mix" showValuePopup="1" parentComponent="pnlMain"/>
+               text="Mic Mix" showValuePopup="1" parentComponent="pnlMain" width="130.0"
+               height="50.0" showTextBox="0"/>
     <Component type="ScriptSlider" id="sldNoiseGain" x="40.0" y="250.0" middlePosition="-62.0"
                stepSize="0.5" min="-100.0" max="-24.0" suffix=" dB" text="Noise"
                mode="Decibel" parentComponent="pnlMain"/>
@@ -49,10 +50,16 @@
                width="20.0" height="60.0" parentComponent="pnlMain" updateAfterInit="0"
                ContentType="Keyboard" bgColour="4284769380" itemColour="452984831"
                itemColour2="4294967295" textColour="0" Data="{&#10;  &quot;KeyWidth&quot;: 30.0,&#10;  &quot;DisplayOctaveNumber&quot;: false,&#10;  &quot;LowKey&quot;: 45,&#10;  &quot;HiKey&quot;: 45,&#10;  &quot;CustomGraphics&quot;: false,&#10;  &quot;DefaultAppearance&quot;: true,&#10;  &quot;BlackKeyRatio&quot;: 0.699999988079071,&#10;  &quot;ToggleMode&quot;: false,&#10;  &quot;MidiChannel&quot;: 1,&#10;  &quot;UseVectorGraphics&quot;: true,&#10;  &quot;UseFlatStyle&quot;: false,&#10;  &quot;MPEKeyboard&quot;: false,&#10;  &quot;MPEStartChannel&quot;: 2,&#10;  &quot;MPEEndChannel&quot;: 16&#10;}"/>
-    <Component type="ScriptSlider" id="sldPan" x="660.0" y="130.0" width="130.0"
+    <Component type="ScriptSlider" id="sldPan" x="660.0" y="120.0" width="130.0"
                height="50.0" parentComponent="pnlMain" isPluginParameter="1"
                processorId="Script FXPan" parameterId="Pan" min="-1.0" middlePosition="0.0"/>
   </Component>
-  <Component type="ScriptSlider" id="VintageSat" x="40.0" y="200.0" text="Vintage / Sat"
+  <Component type="ScriptSlider" id="VintageSat" x="40" y="200" text="Vintage / Sat"
              showValuePopup="1" mode="NormalizedPercentage" suffix="%" middlePosition="0.5"/>
+  <Component type="ScriptSlider" id="Subsynth" x="50" y="300" style="Knob"
+             middlePosition="-1.0" stepSize="0.01" min="0.0" max="1.0" suffix=""
+             filmstripImage="Use default skin" linkedTo="" text="Sublevel"/>
+  <Component type="ScriptSlider" id="SubLevel" x="520" y="180" style="Knob"
+             middlePosition="-1.0" stepSize="0.1" min="-60.0" max="0.0" suffix=" dB"
+             filmstripImage="Use default skin" linkedTo="" text="Sub Level"/>
 </ContentProperties>
